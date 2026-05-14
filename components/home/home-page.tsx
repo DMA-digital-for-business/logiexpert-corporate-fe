@@ -13,6 +13,7 @@ import {
 
 export function HomePage() {
   const heroMediaRef = useRef<HTMLDivElement>(null);
+  const serviceViewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const media = heroMediaRef.current;
@@ -66,6 +67,71 @@ export function HomePage() {
       window.removeEventListener("resize", requestUpdate);
       reducedMotion.removeEventListener("change", requestUpdate);
       desktop.removeEventListener("change", requestUpdate);
+    };
+  }, []);
+
+  useEffect(() => {
+    const viewport = serviceViewportRef.current;
+    if (!viewport) {
+      return;
+    }
+
+    let pointerId: number | null = null;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    const endDrag = () => {
+      pointerId = null;
+      viewport.removeAttribute("data-dragging");
+    };
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (event.pointerType === "mouse" && event.button !== 0) {
+        return;
+      }
+
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      startScrollLeft = viewport.scrollLeft;
+      viewport.setAttribute("data-dragging", "true");
+      viewport.setPointerCapture(event.pointerId);
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      if (pointerId !== event.pointerId) {
+        return;
+      }
+
+      const deltaX = event.clientX - startX;
+      viewport.scrollLeft = startScrollLeft - deltaX;
+    };
+
+    const handlePointerUp = (event: PointerEvent) => {
+      if (pointerId !== event.pointerId) {
+        return;
+      }
+
+      if (viewport.hasPointerCapture(event.pointerId)) {
+        viewport.releasePointerCapture(event.pointerId);
+      }
+
+      endDrag();
+    };
+
+    const handlePointerCancel = () => {
+      endDrag();
+    };
+
+    viewport.addEventListener("pointerdown", handlePointerDown);
+    viewport.addEventListener("pointermove", handlePointerMove);
+    viewport.addEventListener("pointerup", handlePointerUp);
+    viewport.addEventListener("pointercancel", handlePointerCancel);
+
+    return () => {
+      viewport.removeEventListener("pointerdown", handlePointerDown);
+      viewport.removeEventListener("pointermove", handlePointerMove);
+      viewport.removeEventListener("pointerup", handlePointerUp);
+      viewport.removeEventListener("pointercancel", handlePointerCancel);
     };
   }, []);
 
@@ -146,7 +212,7 @@ export function HomePage() {
 
       <section className={styles.servicesSection} id="servizi">
         <h2 className={styles.sectionTitle}>Servizi su misura</h2>
-        <div className={styles.serviceViewport}>
+        <div className={styles.serviceViewport} ref={serviceViewportRef}>
           <div className={styles.serviceRail}>
             {serviceCards.map((card) => (
               <article

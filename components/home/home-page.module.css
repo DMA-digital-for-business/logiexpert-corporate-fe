@@ -230,10 +230,21 @@
   overflow-y: visible;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-y pinch-zoom;
 }
 
 .serviceViewport::-webkit-scrollbar {
   display: none;
+}
+
+.serviceViewport[data-dragging="true"] {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.serviceViewport[data-dragging="true"] .serviceCard {
+  user-select: none;
 }
 
 .serviceRail {
