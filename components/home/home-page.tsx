@@ -87,44 +87,6 @@ export function HomePage() {
               priority
             />
           </div>
-
-          <nav aria-label="Primary" className={styles.nav}>
-            {navigationItems.map((item) => (
-              <a className={styles.navLink} href="#0" key={item}>
-                {item}
-              </a>
-            ))}
-          </nav>
-
-          <div className={styles.headerActions}>
-            <div className={styles.searchShell}>
-              <div className={styles.searchField}>
-                <input
-                  aria-label="Cerca prodotti, software, servizi"
-                  className={styles.search}
-                  placeholder="Cerca prodotti, software, servizi"
-                  type="search"
-                />
-                <span className={styles.searchIcon}>
-                  <SearchIcon />
-                </span>
-              </div>
-            </div>
-            <button
-              aria-label="Profilo"
-              className={styles.headerButton}
-              type="button"
-            >
-              <UserIcon />
-            </button>
-            <button
-              aria-label="Carrello"
-              className={styles.headerButton}
-              type="button"
-            >
-              <BagIcon />
-            </button>
-          </div>
         </div>
       </header>
 

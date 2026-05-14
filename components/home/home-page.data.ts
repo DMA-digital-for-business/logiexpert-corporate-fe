@@ -1,14 +1,4 @@
-export const navigationItems = [
-  "Stampanti",
-  "Terminali",
-  "Lettori",
-  "POS",
-  "RFID",
-  "Sanificabili",
-  "Consumabili",
-  "Software",
-  "Servizi",
-] as const;
+export const navigationItems = [] as const;
 
 export const partnerLogos = [
   {
