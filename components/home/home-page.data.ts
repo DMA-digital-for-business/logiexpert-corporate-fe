@@ -1,5 +1,3 @@
-export const navigationItems = [] as const;
-
 export const partnerLogos = [
   {
     name: "datalogic",
@@ -116,50 +114,7 @@ export const stats = [
   },
 ] as const;
 
-export const footerCategories = navigationItems;
-
-export const footerColumns = [
-  {
-    title: "Customer Care",
-    items: [
-      "label",
-      "label",
-      "label",
-      "label",
-      "label",
-      "label",
-      "label",
-    ],
-  },
-  {
-    title: "Company",
-    items: [
-      "Careers",
-      "label",
-      "label",
-      "label",
-      "label",
-      "label",
-      "label",
-    ],
-  },
-  {
-    title: "Legal",
-    items: [
-      "Privacy Policy",
-      "Cookie Policy",
-      "label",
-      "label",
-      "label",
-      "label",
-      "label",
-    ],
-  },
-] as const;
-
 export const assets = {
   heroImage: "/home/hero-warehouse.png",
   logo: "/home/logo-dark.png",
-  logoLight: "/home/logo-light.png",
-  avatar: "/home/avatar.png",
 } as const;

@@ -3,78 +3,14 @@ import styles from "./home-page.module.css";
 import {
   assets,
   highlights,
-  navigationItems,
   partnerLogos,
   serviceCards,
   stats,
 } from "./home-page.data";
 
-function UserIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className={styles.icon}
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.7" />
-      <path
-        d="M5.5 19c1.7-3 4-4.5 6.5-4.5S16.8 16 18.5 19"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.7"
-      />
-    </svg>
-  );
-}
-
-function BagIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className={styles.icon}
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M6.5 9.5h11l-1 9h-9l-1-9Z"
-        stroke="currentColor"
-        strokeLinejoin="round"
-        strokeWidth="1.7"
-      />
-      <path
-        d="M9 10V8.5a3 3 0 0 1 6 0V10"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.7"
-      />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className={styles.icon}
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <circle cx="10.5" cy="10.5" r="4.75" stroke="currentColor" strokeWidth="1.8" />
-      <path
-        d="m14 14 4.5 4.5"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.8"
-      />
-    </svg>
-  );
-}
-
 export function HomePage() {
   return (
     <main className={styles.page}>
-
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <div className={styles.logoFrame}>
