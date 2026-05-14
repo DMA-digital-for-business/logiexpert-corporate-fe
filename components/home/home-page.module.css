@@ -572,9 +572,35 @@
     width: auto;
   }
 
+  .storySection {
+    padding-top: 112px;
+  }
+
   .storyBody {
     font-size: 16px;
     line-height: 30px;
+  }
+
+  .statsGrid {
+    margin-top: 72px;
+    row-gap: 56px;
+  }
+
+  .statCard {
+    min-height: 148px;
+    padding-top: 10px;
+  }
+
+  .statShapeBox {
+    left: 50%;
+    top: -42px;
+    transform: translateX(-50%);
+  }
+
+  .statLabel {
+    max-width: 28ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .footer {
