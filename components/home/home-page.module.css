@@ -124,11 +124,20 @@
 }
 
 .heroMedia {
+  --hero-parallax-y: 0px;
   position: relative;
+  overflow: hidden;
   background-color: #111;
+}
+
+.heroMediaLayer {
+  position: absolute;
+  inset: -16%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  transform: translate3d(0, var(--hero-parallax-y), 0) scale(1.14);
+  will-change: transform;
 }
 
 .heroMedia::after {
@@ -464,6 +473,11 @@
     min-height: 420px;
   }
 
+  .heroMediaLayer {
+    inset: 0;
+    transform: none;
+  }
+
   .partnerRail,
   .statsGrid,
   .footerContent {
@@ -538,15 +552,8 @@
     justify-content: flex-start;
   }
 
-  .serviceRail {
-    flex-direction: column;
-    width: 100%;
-    padding-right: 0;
-  }
-
   .serviceCard {
-    flex-basis: auto;
-    width: 100%;
+    flex: 0 0 min(432px, calc(100vw - 56px));
     height: 440px;
   }
 

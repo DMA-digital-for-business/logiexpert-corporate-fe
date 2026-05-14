@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./home-page.module.css";
 import {
@@ -9,6 +12,63 @@ import {
 } from "./home-page.data";
 
 export function HomePage() {
+  const heroMediaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const media = heroMediaRef.current;
+    if (!media) {
+      return;
+    }
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 768px)");
+
+    let frame = 0;
+
+    const updateParallax = () => {
+      frame = 0;
+
+      if (reducedMotion.matches || !desktop.matches) {
+        media.style.setProperty("--hero-parallax-y", "0px");
+        return;
+      }
+
+      const rect = media.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const progress =
+        (viewportHeight - rect.top) / (viewportHeight + rect.height);
+      const clampedProgress = Math.max(0, Math.min(1, progress));
+      const offset = (clampedProgress - 0.5) * 160;
+
+      media.style.setProperty("--hero-parallax-y", `${offset.toFixed(2)}px`);
+    };
+
+    const requestUpdate = () => {
+      if (frame) {
+        return;
+      }
+
+      frame = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    reducedMotion.addEventListener("change", requestUpdate);
+    desktop.addEventListener("change", requestUpdate);
+
+    return () => {
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      reducedMotion.removeEventListener("change", requestUpdate);
+      desktop.removeEventListener("change", requestUpdate);
+    };
+  }, []);
+
   return (
     <main className={styles.page}>
       <header className={styles.header}>
@@ -30,13 +90,14 @@ export function HomePage() {
         <div className={styles.heroCopy}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
-              Soluzioni per identificazione automatica, tracciabilità e mobilità
+              Soluzioni per l&apos;identificazione automatica, tracciabilità e
+              mobilità
               industriale
             </h1>
 
             <div className={styles.heroMeta}>
               <p className={styles.metaText}>
-                Gestiamo una magazzino di 100.000+ stock
+                Gestiamo un magazzino di 100.000+ stock
               </p>
             </div>
 
@@ -48,8 +109,13 @@ export function HomePage() {
 
         <div
           className={styles.heroMedia}
-          style={{ backgroundImage: `url(${assets.heroImage})` }}
+          ref={heroMediaRef}
         >
+          <div
+            aria-hidden="true"
+            className={styles.heroMediaLayer}
+            style={{ backgroundImage: `url(${assets.heroImage})` }}
+          />
           <div className={styles.heroBadges}>
             {highlights.map((item) => (
               <div className={styles.heroBadge} key={item}>
