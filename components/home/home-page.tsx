@@ -216,6 +216,7 @@ export function HomePage() {
               <p className={styles.footerAddress}>
                 LogiExpert S.r.l.
                 <br />
+                <br />
                 Viale Sarca 336/F, Edificio 16, 20126 Milano
                 <br />
                 P.IVA/VAT IT09900890964
