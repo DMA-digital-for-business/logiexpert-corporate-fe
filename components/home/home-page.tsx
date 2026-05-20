@@ -287,8 +287,6 @@ export function HomePage() {
                 <br />
                 P.IVA/VAT IT09900890964
                 <br/>
-                Mobile: <a href="tel:+393335067113">+39 333 5067113</a>
-                <br/>
                 Telefono: <a href="tel:+390280898867">+39 02 80898867</a>
                 <br/>
                 Email: <a href="mailto:info@logiexpert.com">info@logiexpert.com</a>
