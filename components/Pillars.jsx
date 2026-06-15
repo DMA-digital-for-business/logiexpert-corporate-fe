@@ -23,7 +23,7 @@ const DEFAULT_ITEMS = {
       body: "Integriamo hardware, software e processi: dal magazzino al cliente, dall'ERP al device sul campo. Senza cuciture, su misura.",
       icon: 'link',
       cta: 'Come lavoriamo',
-      href: '/#sysint',
+      href: '/azienda',
     },
     {
       eyebrow: '03 — Pilastro',
@@ -39,7 +39,7 @@ const DEFAULT_ITEMS = {
       body: 'Assistenza, manutenzione, formazione e consulenza specialistica. Garanzia di efficienza nel tempo per ogni installazione.',
       icon: 'cog',
       cta: 'I nostri servizi',
-      href: '/#servizi',
+      href: '/contatti',
     },
   ],
   en: [
@@ -57,7 +57,7 @@ const DEFAULT_ITEMS = {
       body: 'We integrate hardware, software and processes: from warehouse to customer, from ERP to field device. Seamlessly, tailor-made.',
       icon: 'link',
       cta: 'How we work',
-      href: '/#sysint',
+      href: '/azienda',
     },
     {
       eyebrow: '03 — Pillar',
@@ -73,7 +73,7 @@ const DEFAULT_ITEMS = {
       body: 'Support, maintenance, training and specialist consulting. Guaranteed long-term efficiency for every installation.',
       icon: 'cog',
       cta: 'Our services',
-      href: '/#servizi',
+      href: '/contatti',
     },
   ],
 };

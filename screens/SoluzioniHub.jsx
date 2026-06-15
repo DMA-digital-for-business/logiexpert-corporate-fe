@@ -177,7 +177,7 @@ export default function SoluzioniHub() {
   return (
     <main data-screen-label="Soluzioni hub" style={{ background: '#fff' }}>
       {/* HERO with breadcrumb */}
-      <section style={{ background: '#0D0D12', color: '#fff', padding: '88px 56px 72px', position: 'relative', overflow: 'hidden' }}>
+      <section className="le-clip" style={{ background: '#0D0D12', color: '#fff', padding: '88px 56px 72px', position: 'relative', overflow: 'hidden' }}>
         <div className="le-glow" style={{
           position: 'absolute', left: '-10%', top: '20%', width: '60%', height: '120%',
           background: 'radial-gradient(60% 60% at 30% 50%, rgba(205,22,50,0.45) 0%, rgba(0,0,0,0) 60%)',

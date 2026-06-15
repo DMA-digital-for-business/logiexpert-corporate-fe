@@ -9,8 +9,8 @@ import { useLanguage } from '../lib/LanguageContext';
 // on top, white main row below with logo / centered nav / Contattaci CTA.
 
 const NAV_LABELS = {
-  it: { soluzioni: 'Soluzioni', sysint: 'System Integration', servizi: 'Servizi', ecommerce: 'eCommerce B2B', azienda: 'Azienda', contatti: 'Contatti' },
-  en: { soluzioni: 'Solutions', sysint: 'System Integration', servizi: 'Services', ecommerce: 'B2B eCommerce', azienda: 'Company', contatti: 'Contact' },
+  it: { soluzioni: 'Soluzioni', ecommerce: 'eCommerce B2B', azienda: 'Azienda', contatti: 'Contatti' },
+  en: { soluzioni: 'Solutions', ecommerce: 'B2B eCommerce', azienda: 'Company', contatti: 'Contact' },
 };
 const UTIL_LABELS = {
   it: { supporto: 'Supporto', aree: 'Aree riservate clienti', shop: 'Shop B2B' },
@@ -26,7 +26,7 @@ function UtilityBar() {
       padding: '0 56px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
       gap: 28, fontFamily: 'var(--font-ui)', fontSize: 13
     }}>
-      <a href="#supporto" style={{
+      <a href="tel:+390280898867" style={{
         display: 'inline-flex', alignItems: 'center', gap: 8, color: '#fff', textDecoration: 'none'
       }}>
         <Icon name="phone" size={13} color="#fff" /> {u.supporto}
@@ -83,8 +83,8 @@ function Header({ active = 'home' }) {
   const nl = NAV_LABELS[lang];
   const nav = [
     { id: 'soluzioni',  label: nl.soluzioni },
-    { id: 'sysint',     label: nl.sysint },
-    { id: 'servizi',    label: nl.servizi },
+    // { id: 'sysint',  label: nl.sysint },   // no dedicated page yet
+    // { id: 'servizi', label: nl.servizi },   // no dedicated page yet
     { id: 'ecommerce',  label: nl.ecommerce },
     { id: 'azienda',    label: nl.azienda },
     { id: 'contatti',   label: nl.contatti },
@@ -104,11 +104,11 @@ function Header({ active = 'home' }) {
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           {nav.map(n => {
             const href =
-              n.id === 'soluzioni' ? '/soluzioni'
+              n.id === 'soluzioni'  ? '/soluzioni'
               : n.id === 'contatti' ? '/contatti'
-              : n.id === 'azienda' ? '/azienda'
+              : n.id === 'azienda'  ? '/azienda'
               : n.id === 'ecommerce' ? SHOP_URL
-              : `/#${n.id}`;
+              : '/';
             const ext = href.startsWith('http');
 
             return (
@@ -168,11 +168,11 @@ function Header({ active = 'home' }) {
             </div>
             {nav.map(n => {
               const href =
-                n.id === 'soluzioni' ? '/soluzioni'
+                n.id === 'soluzioni'  ? '/soluzioni'
                 : n.id === 'contatti' ? '/contatti'
-                : n.id === 'azienda' ? '/azienda'
+                : n.id === 'azienda'  ? '/azienda'
                 : n.id === 'ecommerce' ? SHOP_URL
-                : `/#${n.id}`;
+                : '/';
               const ext = href.startsWith('http');
 
               return (

@@ -39,7 +39,7 @@ const DATA = {
         title: 'Assistenza clienti attivi',
         body: 'Helpdesk dedicato a chi ha già un contratto LogiExpert. Apertura ticket sul portale clienti, telefono diretto o email.',
         cta: 'Apri un ticket',
-        ctaHref: '#supporto',
+        ctaHref: 'mailto:assistenza@logiexpert.com',
         tag: 'helpdesk · assistenza · contratti',
       },
       {
@@ -57,7 +57,7 @@ const DATA = {
         title: 'Lavora con noi',
         body: 'Stiamo cercando software engineer, sistemisti, consulenti di processo e tecnici on-site. Inviaci il tuo CV o consulta le posizioni aperte.',
         cta: 'Posizioni aperte',
-        ctaHref: '#azienda',
+        ctaHref: '/azienda',
         tag: 'tech · sales · field',
       },
     ],
@@ -103,7 +103,7 @@ const DATA = {
         title: 'Active customer support',
         body: 'Dedicated helpdesk for customers with a LogiExpert contract. Open a ticket on the customer portal, direct phone or email.',
         cta: 'Open a ticket',
-        ctaHref: '#supporto',
+        ctaHref: 'mailto:assistenza@logiexpert.com',
         tag: 'helpdesk · support · contracts',
       },
       {
@@ -121,7 +121,7 @@ const DATA = {
         title: 'Work with us',
         body: 'We are looking for software engineers, system administrators, process consultants and on-site technicians. Send us your CV or check open positions.',
         cta: 'Open positions',
-        ctaHref: '#azienda',
+        ctaHref: '/azienda',
         tag: 'tech · sales · field',
       },
     ],
@@ -147,7 +147,7 @@ export default function Contatti() {
     <main data-screen-label="Contatti" style={{ background: '#fff' }}>
 
       {/* HERO */}
-      <section style={{
+      <section className="le-clip" style={{
         background: '#0D0D12', color: '#fff', padding: '88px 56px 72px',
         position: 'relative', overflow: 'hidden'
       }}>

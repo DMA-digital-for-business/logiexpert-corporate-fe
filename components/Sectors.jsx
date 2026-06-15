@@ -13,7 +13,7 @@ const DEFAULT_ITEMS = {
       tag: 'Produzione · Lotto · WIP',
       icon: 'factory',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/#manifatturiero',
+      href: '/soluzioni',
     },
     {
       title: 'Logistica & Trasporti',
@@ -21,7 +21,7 @@ const DEFAULT_ITEMS = {
       tag: 'Pallet · POD · Picking',
       icon: 'truck',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/#logistica',
+      href: '/soluzioni',
     },
     {
       title: 'Retail & Distribuzione',
@@ -29,7 +29,7 @@ const DEFAULT_ITEMS = {
       tag: 'Inventario · POS · DC',
       icon: 'retail',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/#retail',
+      href: '/soluzioni',
     },
   ],
   en: [
@@ -39,7 +39,7 @@ const DEFAULT_ITEMS = {
       tag: 'Production · Batch · WIP',
       icon: 'factory',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/#manifatturiero',
+      href: '/soluzioni',
     },
     {
       title: 'Logistics & Transport',
@@ -47,7 +47,7 @@ const DEFAULT_ITEMS = {
       tag: 'Pallet · POD · Picking',
       icon: 'truck',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/#logistica',
+      href: '/soluzioni',
     },
     {
       title: 'Retail & Distribution',
@@ -55,7 +55,7 @@ const DEFAULT_ITEMS = {
       tag: 'Inventory · POS · DC',
       icon: 'retail',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/#retail',
+      href: '/soluzioni',
     },
   ],
 };

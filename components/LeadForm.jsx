@@ -46,7 +46,7 @@ function LeadForm() {
         boxShadow: '0 1px 0 #ECEFF3, inset 0 0 0 1px #ECEFF3'
       }}>
         {/* Left — dark pitch */}
-        <div style={{
+        <div className="le-clip" style={{
           background: '#0D0D12', color: '#fff', padding: '56px 48px',
           position: 'relative', overflow: 'hidden'
         }}>

@@ -68,7 +68,7 @@ const DATA = {
         tag: 'Pallet · POD · Picking · Flotta',
         icon: 'truck',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/#logistica',
+        href: '/soluzioni',
       },
       {
         title: 'Retail & Distribuzione',
@@ -76,7 +76,7 @@ const DATA = {
         tag: 'Inventario · POS · DC · Store',
         icon: 'retail',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/#retail',
+        href: '/soluzioni',
       },
       {
         title: 'Manufacturing',
@@ -84,7 +84,7 @@ const DATA = {
         tag: 'Lotto · WIP · Etichettatura · ERP',
         icon: 'factory',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/#manifatturiero',
+        href: '/soluzioni',
       },
     ],
     approccioOverline: 'Il nostro approccio',
@@ -180,7 +180,7 @@ const DATA = {
         tag: 'Pallet · POD · Picking · Fleet',
         icon: 'truck',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/#logistica',
+        href: '/soluzioni',
       },
       {
         title: 'Retail & Distribution',
@@ -188,7 +188,7 @@ const DATA = {
         tag: 'Inventory · POS · DC · Store',
         icon: 'retail',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/#retail',
+        href: '/soluzioni',
       },
       {
         title: 'Manufacturing',
@@ -196,7 +196,7 @@ const DATA = {
         tag: 'Batch · WIP · Labelling · ERP',
         icon: 'factory',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/#manifatturiero',
+        href: '/soluzioni',
       },
     ],
     approccioOverline: 'Our approach',
@@ -250,7 +250,7 @@ export default function Azienda() {
     <main data-screen-label="Azienda" style={{ background: '#fff' }}>
 
       {/* HERO */}
-      <section style={{
+      <section className="le-clip" style={{
         background: '#0D0D12', color: '#fff', padding: '88px 56px 72px',
         position: 'relative', overflow: 'hidden'
       }}>
@@ -398,7 +398,7 @@ export default function Azienda() {
       />
 
       {/* INNOVAZIONE E VISIONE FUTURA */}
-      <section style={{ background: '#0D0D12', color: '#fff', padding: '120px 56px', position: 'relative', overflow: 'hidden' }}>
+      <section className="le-clip" style={{ background: '#0D0D12', color: '#fff', padding: '120px 56px', position: 'relative', overflow: 'hidden' }}>
         <div className="le-glow" style={{
           position: 'absolute', right: '-10%', top: '-20%', width: '55%', height: '170%',
           background: 'radial-gradient(60% 60% at 70% 50%, rgba(205,22,50,0.4) 0%, rgba(0,0,0,0) 60%)',

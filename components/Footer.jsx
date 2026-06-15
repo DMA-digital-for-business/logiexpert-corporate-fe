@@ -18,23 +18,14 @@ const CONTENT = {
         { l: 'WMS — LogiStock',       h: '/soluzioni/wms' },
         { l: 'AIDC & Mobility',       h: '/soluzioni/aidc-mobility' },
       ]},
-      { title: 'Settori', links: [
-        { l: 'Manifatturiero',          h: '/#manifatturiero' },
-        { l: 'Logistica & Trasporti',   h: '/#logistica' },
-        { l: 'Retail & Distribuzione',  h: '/#retail' },
-      ]},
+      // Settori column removed — hash anchors (/#manifatturiero etc.) non esistono ancora
       { title: 'Azienda', links: [
         { l: 'Chi siamo',           h: '/azienda#chi-siamo' },
         { l: 'Il nostro approccio', h: '/azienda#approccio' },
         { l: 'Contatti',            h: '/contatti' },
         { l: 'Lavora con noi',      h: '/contatti' },
-        { l: 'News & Insight',      h: '/azienda' },
       ]},
-      { title: 'Legal', links: [
-        { l: 'Cookie Policy',        h: '/#legal' },
-        { l: 'Privacy Policy',       h: '/#legal' },
-        { l: 'Termini & Condizioni', h: '/#legal' },
-      ]},
+      // Legal column removed — pagine legali non ancora disponibili
     ],
     copyright: '© LogiExpert 2026 — Tutti i diritti riservati',
     tagline: 'System integrator · Software house per la logistica digitale',
@@ -50,23 +41,14 @@ const CONTENT = {
         { l: 'WMS — LogiStock',       h: '/soluzioni/wms' },
         { l: 'AIDC & Mobility',       h: '/soluzioni/aidc-mobility' },
       ]},
-      { title: 'Industries', links: [
-        { l: 'Manufacturing',             h: '/#manifatturiero' },
-        { l: 'Logistics & Transport',     h: '/#logistica' },
-        { l: 'Retail & Distribution',     h: '/#retail' },
-      ]},
+      // Industries column removed — hash anchors (/#manifatturiero etc.) do not exist yet
       { title: 'Company', links: [
         { l: 'About us',          h: '/azienda#chi-siamo' },
         { l: 'Our approach',      h: '/azienda#approccio' },
         { l: 'Contact',           h: '/contatti' },
         { l: 'Work with us',      h: '/contatti' },
-        { l: 'News & Insight',    h: '/azienda' },
       ]},
-      { title: 'Legal', links: [
-        { l: 'Cookie Policy',     h: '/#legal' },
-        { l: 'Privacy Policy',    h: '/#legal' },
-        { l: 'Terms & Conditions',h: '/#legal' },
-      ]},
+      // Legal column removed — legal pages not yet available
     ],
     copyright: '© LogiExpert 2026 — All rights reserved',
     tagline: 'System integrator · Software house for digital logistics',
@@ -107,7 +89,7 @@ function Footer() {
 
         <div style={{ height: 1, background: 'rgba(255,255,255,0.12)', margin: '32px 0' }} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1fr', gap: 36 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 36 }}>
           <div>
             <img src="/assets/logo-logiexpert-white.png" style={{ height: 42, marginBottom: 24 }} alt="LogiExpert" />
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 14, lineHeight: '22px', color: 'rgba(255,255,255,0.7)' }}>

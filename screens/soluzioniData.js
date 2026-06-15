@@ -45,9 +45,9 @@ export const SOLUZIONI_DATA = {
         { icon: 'link',     t: 'Integrazione ERP',             b: 'Dialogo nativo con i principali ERP e gestionali, senza duplicazioni di dato.' },
       ],
       sectors: [
-        { t: 'Manifatturiero',         b: 'Già adottato da primarie aziende dei settori lattiero-caseario e salumi/formaggi.', tag: 'Food · UDC',    href: '#manifatturiero' },
-        { t: 'Logistica & Trasporti',  b: 'Piattaforme logistiche e distributori con elevati volumi di unità di carico.',      tag: 'Piattaforme',   href: '#logistica' },
-        { t: 'Retail & Distribuzione', b: 'Reti distributive che gestiscono asset riutilizzabili tra più punti di consegna.',  tag: 'Distribuzione', href: '#retail' },
+        { t: 'Manifatturiero',         b: 'Già adottato da primarie aziende dei settori lattiero-caseario e salumi/formaggi.', tag: 'Food · UDC',    href: '/azienda' },
+        { t: 'Logistica & Trasporti',  b: 'Piattaforme logistiche e distributori con elevati volumi di unità di carico.',      tag: 'Piattaforme',   href: '/azienda' },
+        { t: 'Retail & Distribuzione', b: 'Reti distributive che gestiscono asset riutilizzabili tra più punti di consegna.',  tag: 'Distribuzione', href: '/azienda' },
       ],
       integrations: [
         { t: 'ERP & gestionali', v: 'Integrazione nativa con i principali ERP e gestionali di mercato' },
@@ -105,9 +105,9 @@ export const SOLUZIONI_DATA = {
         { icon: 'link',     t: 'ERP integration',            b: 'Native communication with the main ERPs and management systems, without data duplication.' },
       ],
       sectors: [
-        { t: 'Manufacturing',          b: 'Already adopted by major companies in the dairy and cured meats/cheese sectors.', tag: 'Food · LHU',    href: '#manifatturiero' },
-        { t: 'Logistics & Transport',  b: 'Logistics platforms and distributors with high volumes of load handling units.',   tag: 'Platforms',    href: '#logistica' },
-        { t: 'Retail & Distribution',  b: 'Distribution networks managing reusable assets across multiple delivery points.',  tag: 'Distribution', href: '#retail' },
+        { t: 'Manufacturing',          b: 'Already adopted by major companies in the dairy and cured meats/cheese sectors.', tag: 'Food · LHU',    href: '/azienda' },
+        { t: 'Logistics & Transport',  b: 'Logistics platforms and distributors with high volumes of load handling units.',   tag: 'Platforms',    href: '/azienda' },
+        { t: 'Retail & Distribution',  b: 'Distribution networks managing reusable assets across multiple delivery points.',  tag: 'Distribution', href: '/azienda' },
       ],
       integrations: [
         { t: 'ERP & management systems', v: 'Native integration with the main ERPs and management systems on the market' },
@@ -171,9 +171,9 @@ export const SOLUZIONI_DATA = {
         { icon: 'link',     t: 'Integrazione ERP',        b: 'Dialogo fluido con i principali ERP e gestionali presenti in azienda.' },
       ],
       sectors: [
-        { t: 'Logistica & Trasporti',  b: 'Flotte e reti di consegna che devono certificare ogni operazione sul campo.',   tag: 'Last mile',  href: '#logistica' },
-        { t: 'Retail & Distribuzione', b: 'Riassortimento e consegne ai punti vendita con prova di consegna strutturata.', tag: 'B2B retail', href: '#retail' },
-        { t: 'Manifatturiero',         b: 'Consegne dirette a clienti e distributori con evidenze integrate nei sistemi.', tag: 'B2B direct', href: '#manifatturiero' },
+        { t: 'Logistica & Trasporti',  b: 'Flotte e reti di consegna che devono certificare ogni operazione sul campo.',   tag: 'Last mile',  href: '/azienda' },
+        { t: 'Retail & Distribuzione', b: 'Riassortimento e consegne ai punti vendita con prova di consegna strutturata.', tag: 'B2B retail', href: '/azienda' },
+        { t: 'Manifatturiero',         b: 'Consegne dirette a clienti e distributori con evidenze integrate nei sistemi.', tag: 'B2B direct', href: '/azienda' },
       ],
       integrations: [
         { t: 'ERP & gestionali', v: 'Integrazione con i principali ERP e gestionali di mercato' },
@@ -231,9 +231,9 @@ export const SOLUZIONI_DATA = {
         { icon: 'link',     t: 'ERP integration',        b: 'Smooth communication with the main ERPs and management systems in-house.' },
       ],
       sectors: [
-        { t: 'Logistics & Transport',  b: 'Fleets and delivery networks that need to certify every field operation.',                 tag: 'Last mile',  href: '#logistica' },
-        { t: 'Retail & Distribution',  b: 'Restocking and point-of-sale deliveries with structured proof of delivery.',              tag: 'B2B retail', href: '#retail' },
-        { t: 'Manufacturing',          b: 'Direct deliveries to customers and distributors with evidence integrated into systems.',  tag: 'B2B direct', href: '#manifatturiero' },
+        { t: 'Logistics & Transport',  b: 'Fleets and delivery networks that need to certify every field operation.',                 tag: 'Last mile',  href: '/azienda' },
+        { t: 'Retail & Distribution',  b: 'Restocking and point-of-sale deliveries with structured proof of delivery.',              tag: 'B2B retail', href: '/azienda' },
+        { t: 'Manufacturing',          b: 'Direct deliveries to customers and distributors with evidence integrated into systems.',  tag: 'B2B direct', href: '/azienda' },
       ],
       integrations: [
         { t: 'ERP & management systems', v: 'Integration with the main ERPs and management systems on the market' },
@@ -297,9 +297,9 @@ export const SOLUZIONI_DATA = {
         { icon: 'link',     t: 'Integrazione & automazione', b: 'Dialogo con ERP, gestionali e, dove serve, robot, conveyor e sistemi di automazione.' },
       ],
       sectors: [
-        { t: 'Manifatturiero',         b: 'Magazzini di materie prime, semilavorati e prodotto finito con flussi articolati.', tag: 'MP · WIP · PF', href: '#manifatturiero' },
-        { t: 'Logistica & Trasporti',  b: 'Operatori logistici con elevati volumi e pressione sui tempi di evasione.',          tag: 'Throughput',    href: '#logistica' },
-        { t: 'Retail & Distribuzione', b: 'Centri di distribuzione con alta rotazione e numerose referenze.',                   tag: 'DC',            href: '#retail' },
+        { t: 'Manifatturiero',         b: 'Magazzini di materie prime, semilavorati e prodotto finito con flussi articolati.', tag: 'MP · WIP · PF', href: '/azienda' },
+        { t: 'Logistica & Trasporti',  b: 'Operatori logistici con elevati volumi e pressione sui tempi di evasione.',          tag: 'Throughput',    href: '/azienda' },
+        { t: 'Retail & Distribuzione', b: 'Centri di distribuzione con alta rotazione e numerose referenze.',                   tag: 'DC',            href: '/azienda' },
       ],
       integrations: [
         { t: 'ERP & gestionali', v: 'Integrazione nativa con i principali ERP e gestionali di mercato' },
@@ -357,9 +357,9 @@ export const SOLUZIONI_DATA = {
         { icon: 'link',     t: 'Integration & automation', b: 'Communication with ERPs, management systems and, where needed, robots, conveyors and automation systems.' },
       ],
       sectors: [
-        { t: 'Manufacturing',          b: 'Warehouses for raw materials, WIP and finished goods with complex flows.', tag: 'RM · WIP · FG', href: '#manifatturiero' },
-        { t: 'Logistics & Transport',  b: 'Logistics operators with high volumes and pressure on fulfilment times.',   tag: 'Throughput',   href: '#logistica' },
-        { t: 'Retail & Distribution',  b: 'Distribution centres with high turnover and numerous SKUs.',                tag: 'DC',           href: '#retail' },
+        { t: 'Manufacturing',          b: 'Warehouses for raw materials, WIP and finished goods with complex flows.', tag: 'RM · WIP · FG', href: '/azienda' },
+        { t: 'Logistics & Transport',  b: 'Logistics operators with high volumes and pressure on fulfilment times.',   tag: 'Throughput',   href: '/azienda' },
+        { t: 'Retail & Distribution',  b: 'Distribution centres with high turnover and numerous SKUs.',                tag: 'DC',           href: '/azienda' },
       ],
       integrations: [
         { t: 'ERP & management systems', v: 'Native integration with the main ERPs and management systems on the market' },
@@ -422,9 +422,9 @@ export const SOLUZIONI_DATA = {
         { icon: 'shield',  t: 'Manutenzione su SLA', b: 'Helpdesk Italia, intervento on-site 4h sui contratti premium.' },
       ],
       sectors: [
-        { t: 'Manifatturiero',         b: 'Terminali a bordo impianto. Stampanti etichette di lotto.',  tag: 'Linea · QC',  href: '#manifatturiero' },
-        { t: 'Logistica & Trasporti',  b: 'Terminali per magazziniere e per corriere.',                  tag: 'WMS · POD',   href: '#logistica' },
-        { t: 'Retail & Distribuzione', b: 'Terminali per punto vendita e per inventario ciclico.',      tag: 'POS · STORE', href: '#retail' },
+        { t: 'Manifatturiero',         b: 'Terminali a bordo impianto. Stampanti etichette di lotto.',  tag: 'Linea · QC',  href: '/azienda' },
+        { t: 'Logistica & Trasporti',  b: 'Terminali per magazziniere e per corriere.',                  tag: 'WMS · POD',   href: '/azienda' },
+        { t: 'Retail & Distribuzione', b: 'Terminali per punto vendita e per inventario ciclico.',      tag: 'POS · STORE', href: '/azienda' },
       ],
       integrations: [
         { t: 'Terminali', v: 'Zebra TC22/TC27/TC78 · Honeywell CT45/CK65 · Datalogic Memor 10/20/30' },
@@ -481,9 +481,9 @@ export const SOLUZIONI_DATA = {
         { icon: 'shield',  t: 'SLA maintenance',     b: 'Italian helpdesk, on-site intervention within 4h on premium contracts.' },
       ],
       sectors: [
-        { t: 'Manufacturing',          b: 'Terminals on the production line. Batch label printers.',  tag: 'Line · QC',   href: '#manifatturiero' },
-        { t: 'Logistics & Transport',  b: 'Terminals for warehouse staff and for couriers.',           tag: 'WMS · POD',   href: '#logistica' },
-        { t: 'Retail & Distribution',  b: 'Terminals for point of sale and cycle counting.',          tag: 'POS · STORE', href: '#retail' },
+        { t: 'Manufacturing',          b: 'Terminals on the production line. Batch label printers.',  tag: 'Line · QC',   href: '/azienda' },
+        { t: 'Logistics & Transport',  b: 'Terminals for warehouse staff and for couriers.',           tag: 'WMS · POD',   href: '/azienda' },
+        { t: 'Retail & Distribution',  b: 'Terminals for point of sale and cycle counting.',          tag: 'POS · STORE', href: '/azienda' },
       ],
       integrations: [
         { t: 'Terminals', v: 'Zebra TC22/TC27/TC78 · Honeywell CT45/CK65 · Datalogic Memor 10/20/30' },

@@ -6,6 +6,10 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-display);
   color: var(--text-primary);
@@ -107,6 +111,19 @@ textarea:focus {
 .le-glow {
   animation: le-glow var(--glow-dur, 5.5s) ease-in-out infinite alternate;
   will-change: opacity, transform;
+}
+
+/* Safari iOS compositor clipping fix ──────────────────────────────────────
+   Elements with will-change (le-glow, le-aurora) are promoted to their own
+   GPU compositor layer. In WebKit, this causes them to escape overflow:hidden
+   clipping of their parent unless the parent is ALSO on a compositor layer.
+   .le-clip forces the parent onto a GPU layer via translateZ, guaranteeing the
+   clip works correctly on Safari iOS (the "narrow section / black padding" bug).
+   Apply to any element that has overflow:hidden and contains le-glow/le-aurora.
+   ─────────────────────────────────────────────────────────────────────────── */
+.le-clip {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Flowing dash — the animated supply-chain line in the hero */
@@ -213,7 +230,7 @@ textarea:focus {
   }
   /* keep 4-up as 2-up down here; footer 5-up → 2-up */
   body [style*='repeat(4, 1fr)'],
-  body [style*='grid-template-columns:1.4fr 1fr 1fr 1fr 1fr'] { grid-template-columns: repeat(2, 1fr) !important; }
+  /* footer is now 3-col (1.4fr 1fr 1fr) — handled by the 1fr 1fr selector above */
 
   /* Shrink oversized gaps */
   body [style*='gap:80px'],
@@ -263,13 +280,16 @@ textarea:focus {
 
 /* ---------- Phones (<= 560px) ---------- */
 @media (max-width: 560px) {
+  /* Decorative glows are invisible at 375 px and can trigger compositing edge-cases
+     on Safari iOS that make sections appear narrower. Hide entirely on phones. */
+  .le-glow, .le-aurora { display: none !important; }
+
   body main section,
   body header > div,
   body footer > div { padding-left: 18px !important; padding-right: 18px !important; }
 
-  /* Everything to a single column, including 4-up and the footer */
-  body [style*='repeat(4, 1fr)'],
-  body [style*='grid-template-columns:1.4fr 1fr 1fr 1fr 1fr'] { grid-template-columns: 1fr !important; }
+  /* Everything to a single column, including 4-up grids */
+  body [style*='repeat(4, 1fr)'] { grid-template-columns: 1fr !important; }
 
   /* Footer bottom legal row stacks */
   body footer > div > div:last-child { flex-direction: column !important; gap: 8px !important; text-align: left !important; }

@@ -74,7 +74,7 @@ export default function SoluzioneDetail({ slug = 'tracciabilita-pallet' }) {
     <main data-screen-label={`Soluzione · ${title}`} style={{ background: '#fff' }}>
 
       {/* HERO */}
-      <section style={{
+      <section className="le-clip" style={{
         background: '#0D0D12', color: '#fff', padding: '88px 56px 80px',
         position: 'relative', overflow: 'hidden'
       }}>

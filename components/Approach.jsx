@@ -52,7 +52,7 @@ function Approach({
   const resolvedCta = cta ?? { label: d.ctaLabel, href: '/azienda' };
 
   return (
-    <section style={{ background: '#0D0D12', color: '#fff', padding: '120px 56px', position: 'relative', overflow: 'hidden' }}>
+    <section className="le-clip" style={{ background: '#0D0D12', color: '#fff', padding: '120px 56px', position: 'relative', overflow: 'hidden' }}>
       <div className="le-glow" style={{
         position: 'absolute', left: '-12%', top: '-30%', width: '55%', height: '180%',
         background: 'radial-gradient(60% 60% at 30% 50%, rgba(205,22,50,0.4) 0%, rgba(0,0,0,0) 60%)',

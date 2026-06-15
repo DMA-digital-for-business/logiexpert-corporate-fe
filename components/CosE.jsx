@@ -151,7 +151,7 @@ function CosE() {
             }}>
               {c.footer}
             </div>
-            <a href="/#sysint" style={{
+            <a href="/azienda" style={{
               flexShrink: 0,
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '0 18px', height: 44,

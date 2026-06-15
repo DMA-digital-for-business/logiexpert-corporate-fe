@@ -37,7 +37,7 @@ function CTABanner({
 
   return (
     <section style={{ background: '#F2F2F2', padding: '0 56px 96px' }}>
-      <div style={{
+      <div className="le-clip" style={{
         maxWidth: 1328, margin: '0 auto',
         background: 'linear-gradient(120deg, #CD1632 0%, #95122B 100%)',
         borderRadius: 24, padding: 64,

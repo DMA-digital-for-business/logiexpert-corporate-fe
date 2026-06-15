@@ -46,7 +46,7 @@ function Hero() {
   return (
     <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 640, background: '#101010', position: 'relative' }}>
       {/* Left — dark + animated amber aurora */}
-      <div style={{ position: 'relative', overflow: 'hidden', padding: '88px 56px 64px' }}>
+      <div className="le-clip" style={{ position: 'relative', overflow: 'hidden', padding: '88px 56px 64px' }}>
         <div className="le-aurora" style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
           background: 'radial-gradient(120% 110% at 0% 100%, #FFE9C5 0%, #B0220C 18%, rgba(176,34,12,0) 50%, rgba(0,0,0,0) 100%)',
@@ -106,7 +106,7 @@ function Hero() {
       </div>
 
       {/* Right — photo with floating overlay chips */}
-      <div style={{
+      <div className="le-clip" style={{
         position: 'relative', overflow: 'hidden',
         background: 'radial-gradient(120% 120% at 100% 100%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%), linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.08)), url(/assets/hero-warehouse.jpg) center/cover no-repeat'
       }}>
