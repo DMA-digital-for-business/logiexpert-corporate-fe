@@ -1,0 +1,279 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--le-red);
+  color: #fff;
+}
+
+main > section {
+  opacity: 1;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--le-red) !important;
+  box-shadow: 0 0 0 3px rgba(205, 22, 50, 0.15) !important;
+}
+
+/* ==========================================================================
+   Motion system — scroll reveal, ambient animation, cursor spotlight.
+   Progressive enhancement: the `.reveal-enabled` class is added by JS only,
+   so without JS (or with reduced-motion) all content is fully visible.
+   ========================================================================== */
+
+/* Scroll reveal — hidden only once JS confirms support */
+.reveal-enabled [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal-enabled [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered children inside a revealed block */
+.reveal-enabled [data-reveal] [data-reveal-child] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.6s var(--ease-out);
+  transition-delay: calc(var(--reveal-i, 0) * 80ms);
+}
+.reveal-enabled [data-reveal].is-visible [data-reveal-child] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Ambient aurora — slow breathing gradient layer used in dark heroes */
+@keyframes le-aurora {
+  0%   { transform: translate3d(0, 0, 0) scale(1);      opacity: 0.85; }
+  50%  { transform: translate3d(4%, -3%, 0) scale(1.12); opacity: 1; }
+  100% { transform: translate3d(-3%, 2%, 0) scale(1.05); opacity: 0.9; }
+}
+.le-aurora { animation: le-aurora 16s ease-in-out infinite alternate; }
+
+/* Floating drift — used by hero chips */
+@keyframes le-float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+.le-float { animation: le-float var(--float-dur, 6s) ease-in-out infinite; }
+
+/* Soft pulse — status dots */
+@keyframes le-pulse {
+  0%, 100% { opacity: 1;   box-shadow: 0 0 0 0 rgba(255, 189, 76, 0.55); }
+  50%      { opacity: 0.7; box-shadow: 0 0 0 6px rgba(255, 189, 76, 0); }
+}
+.le-pulse { animation: le-pulse 2.4s ease-in-out infinite; }
+
+/* Ambient glow — gentle breathing for the decorative radial blobs in sections.
+   Only opacity + transform (compositor-friendly, cross-browser safe). The parent
+   sections clip overflow, so the slight scale never creates scrollbars. */
+@keyframes le-glow {
+  0%   { opacity: 0.5; transform: scale(0.96); }
+  100% { opacity: 1;   transform: scale(1.1); }
+}
+.le-glow {
+  animation: le-glow var(--glow-dur, 5.5s) ease-in-out infinite alternate;
+  will-change: opacity, transform;
+}
+
+/* Flowing dash — the animated supply-chain line in the hero */
+@keyframes le-dash {
+  to { stroke-dashoffset: -1000; }
+}
+.le-flow-line { animation: le-dash 9s linear infinite; }
+
+/* Cursor spotlight — radial glow following the pointer over a dark grid */
+.le-spotlight { position: relative; }
+.le-spotlight__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  background: radial-gradient(
+    280px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 120, 90, 0.5) 0%,
+    rgba(205, 22, 50, 0.28) 28%,
+    rgba(205, 22, 50, 0) 62%
+  );
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+.le-spotlight:hover .le-spotlight__glow { opacity: 1; }
+
+/* Underline sweep — links / CTAs */
+.le-link-sweep {
+  background-image: linear-gradient(var(--le-red), var(--le-red));
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s var(--ease-out);
+}
+.le-link-sweep:hover { background-size: 100% 1.5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .le-aurora, .le-float, .le-pulse, .le-flow-line, .le-glow { animation: none !important; }
+  .reveal-enabled [data-reveal],
+  .reveal-enabled [data-reveal] [data-reveal-child] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive — IMPORTANT: React serialises inline styles WITHOUT a space after
+   the colon (e.g. "grid-template-columns:1fr 1fr", "min-height:640px"), so the
+   attribute selectors below match that exact form. An external `!important`
+   beats the (non-important) inline styles, so these overrides win.
+   Breakpoints: <=1100 tablet landscape · <=900 tablet portrait/mobile · <=560 phones.
+   ========================================================================== */
+
+/* ---------- Tablet landscape and below (<= 1100px) ---------- */
+@media (max-width: 1100px) {
+  body main section,
+  body header > div,
+  body footer {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+  /* 4-up grids → 2-up */
+  body [style*='repeat(4, 1fr)'] { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ---------- Tablet portrait & mobile (<= 900px): single column ---------- */
+@media (max-width: 900px) {
+  /* Horizontal gutters */
+  body main section,
+  body header > div,
+  body footer > div {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* Tame the large vertical section paddings */
+  body [style*='padding:120px 56px'],
+  body [style*='padding:96px 56px'],
+  body [style*='padding:80px 56px'] { padding-top: 64px !important; padding-bottom: 64px !important; }
+  body [style*='padding:88px 56px 72px'],
+  body [style*='padding:88px 56px 64px'],
+  body [style*='padding:80px 56px 96px'] { padding-top: 56px !important; padding-bottom: 64px !important; }
+  body [style*='padding:0 56px 96px'] { padding-bottom: 64px !important; }
+
+  /* Collapse every multi-column grid to a single column */
+  body [style*='grid-template-columns:1fr 1fr'],
+  body [style*='grid-template-columns:1fr 1.6fr'],
+  body [style*='grid-template-columns:1fr 1.4fr'],
+  body [style*='grid-template-columns:1fr 1.3fr'],
+  body [style*='grid-template-columns:1fr 1.1fr'],
+  body [style*='grid-template-columns:1fr 2fr'],
+  body [style*='grid-template-columns:2fr 1fr'],
+  body [style*='grid-template-columns:1.5fr 1fr'],
+  body [style*='grid-template-columns:1.4fr 1fr'],
+  body [style*='grid-template-columns:1.2fr 1fr'],
+  body [style*='grid-template-columns:120px 1fr'],
+  body [style*='grid-template-columns:160px 1fr'],
+  body [style*='repeat(2, 1fr)'],
+  body [style*='repeat(3, 1fr)'],
+  body [style*='repeat(9, 1fr)'] {
+    grid-template-columns: 1fr !important;
+  }
+  /* keep 4-up as 2-up down here; footer 5-up → 2-up */
+  body [style*='repeat(4, 1fr)'],
+  body [style*='grid-template-columns:1.4fr 1fr 1fr 1fr 1fr'] { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Shrink oversized gaps */
+  body [style*='gap:80px'],
+  body [style*='gap:64px'] { gap: 32px !important; }
+
+  /* Home hero: stack and give the photo panel a real height */
+  body section[style*='min-height:640px'] {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  body section[style*='min-height:640px'] > div:first-child { padding: 56px 24px 40px !important; }
+  body section[style*='min-height:640px'] > div:nth-child(2) { min-height: 300px !important; }
+
+  /* Sticky side columns must not stick once stacked */
+  body [style*='position:sticky'] { position: static !important; top: auto !important; }
+
+  /* Typography down-scale */
+  body h1,
+  body [style*='font-size:60px'],
+  body [style*='font-size:56px'] { font-size: 34px !important; line-height: 40px !important; }
+  body [style*='font-size:44px'],
+  body [style*='font-size:40px'] { font-size: 28px !important; line-height: 34px !important; }
+  body [style*='font-size:36px'],
+  body [style*='font-size:32px'] { font-size: 24px !important; line-height: 30px !important; }
+  body [style*='font-size:30px'],
+  body [style*='font-size:28px'],
+  body [style*='font-size:26px'] { font-size: 22px !important; line-height: 28px !important; }
+
+  /* Header → mobile: hide utility bar + nav, show burger */
+  body header > div:first-child { display: none !important; }
+  body header nav { display: none !important; }
+  body header .le-burger { display: inline-flex !important; }
+  body header > div:nth-child(2) { height: auto !important; padding: 14px 24px !important; }
+  body header img[alt='LogiExpert'] { height: 44px !important; }
+
+  /* CosE chain (repeat(9)) — rotate the connector arrows when vertical */
+  body [style*='repeat(9, 1fr)'] > div:nth-child(even) svg { transform: rotate(90deg) !important; }
+  body [style*='repeat(9, 1fr)'] > div:nth-child(even) { min-height: 24px !important; padding: 8px 0 !important; }
+
+  /* Roomy rounded cards / forms → tighter padding */
+  body article[style*='padding: 36px'],
+  body [style*='border-radius: 24px'][style*='padding: 64px'],
+  body form[style*='padding:48px'],
+  body [style*='border-radius: 18px'][style*='padding: 36px'],
+  body [style*='padding: 32px'][style*='border-radius: 18px'] { padding: 24px !important; }
+}
+
+/* ---------- Phones (<= 560px) ---------- */
+@media (max-width: 560px) {
+  body main section,
+  body header > div,
+  body footer > div { padding-left: 18px !important; padding-right: 18px !important; }
+
+  /* Everything to a single column, including 4-up and the footer */
+  body [style*='repeat(4, 1fr)'],
+  body [style*='grid-template-columns:1.4fr 1fr 1fr 1fr 1fr'] { grid-template-columns: 1fr !important; }
+
+  /* Footer bottom legal row stacks */
+  body footer > div > div:last-child { flex-direction: column !important; gap: 8px !important; text-align: left !important; }
+
+  /* Hero stat row wraps comfortably */
+  body section[style*='min-height:640px'] [style*='gap:36px'] { gap: 22px !important; flex-wrap: wrap !important; }
+}

@@ -1,0 +1,255 @@
+/* ==========================================================================
+   LogiExpert Design System — Tokens
+   Italian B2B logistics & supply-chain. Tone: institutional but modern,
+   tech/professional. Italian copy. Sober palette, single bold red accent.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* Outfit — brand fonts, served locally. Variable font handles 100..900. */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/Outfit-VariableFont_wght.ttf') format('truetype-variations'),
+       url('/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+}
+/* Static fallbacks for renderers that don't load variable fonts. */
+@font-face { font-family: 'Outfit'; font-weight: 300; font-style: normal; font-display: swap; src: url('/fonts/Outfit-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Outfit'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/Outfit-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Outfit'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/Outfit-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Outfit'; font-weight: 600; font-style: normal; font-display: swap; src: url('/fonts/Outfit-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Outfit'; font-weight: 700; font-style: normal; font-display: swap; src: url('/fonts/Outfit-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Outfit'; font-weight: 800; font-style: normal; font-display: swap; src: url('/fonts/Outfit-ExtraBold.ttf') format('truetype'); }
+@font-face { font-family: 'Outfit'; font-weight: 900; font-style: normal; font-display: swap; src: url('/fonts/Outfit-Black.ttf') format('truetype'); }
+
+:root {
+  /* ── Brand color ─────────────────────────────────────────────────────── */
+  --le-red:            #CD1632;   /* signature LogiExpert red (logo swoosh, hello-bar, CTAs, stats) */
+  --le-red-700:        #95122B;
+  --le-red-50:         #FADAE1;
+  --le-red-25:         #FEEFF2;
+
+  /* ── Neutral / Solid scale (from Style-Guide “Colors”) ──────────────── */
+  --neutral-0:         #FFFFFF;
+  --neutral-25:        #F6F8FA;
+  --neutral-50:        #ECEFF3;
+  --neutral-100:       #DFE1E7;
+  --neutral-200:       #C1C7D0;
+  --neutral-300:       #A4ABB8;   /* disabled / hint */
+  --neutral-400:       #818898;   /* subdued text   */
+  --neutral-500:       #666D80;   /* normal muted   */
+  --neutral-600:       #353849;   /* heading muted  */
+  --neutral-700:       #26272C;
+  --neutral-800:       #161616;
+  --neutral-900:       #0D0D12;   /* primary text   */
+  --neutral-950:       #000000;
+
+  /* ── Marketing surfaces ─────────────────────────────────────────────── */
+  --bg-page:           #F2F2F2;   /* light background used across pages */
+  --bg-card:           #FFFFFF;
+  --bg-dark:           #101010;   /* hero / footer outer */
+  --bg-dark-deep:      #0D0D12;   /* footer inner block / style-guide titles */
+
+  /* ── Semantic ───────────────────────────────────────────────────────── */
+  --success-100:       #2BA37A;   /* badge / “in stocks” */
+  --success-50:        #9DE0D3;
+  --success-25:        #DDF2EE;
+  --success-300:       #174E43;
+  --warning-100:       #FFBD4C;
+  --warning-25:        #F9ECCB;
+  --warning-300:       #956321;
+  --danger-100:        #DF1C41;
+  --danger-25:         #FADAE1;
+  --info-100:          #33CFFF;
+  --info-25:           #D1F0F9;
+
+  /* ── Text roles ─────────────────────────────────────────────────────── */
+  --text-primary:      var(--neutral-900);
+  --text-strong:       var(--neutral-800);
+  --text-default:      #36394A;   /* labels */
+  --text-muted:        var(--neutral-500);
+  --text-subdued:      var(--neutral-400);
+  --text-disabled:     var(--neutral-300);
+  --text-inverse:      #FFFFFF;
+  --text-on-dark-muted:rgba(255,255,255,0.72);
+  --text-accent:       var(--le-red);
+
+  /* ── Border ─────────────────────────────────────────────────────────── */
+  --border-subtle:     #ECEFF3;
+  --border-default:    #DFE1E7;
+  --border-strong:     #C1C7D0;
+  --border-input:      #DFE1E7;
+
+  /* ── Typography ─────────────────────────────────────────────────────── */
+  --font-display:      'Outfit', system-ui, sans-serif;   /* marketing headings, big numbers, buttons */
+  --font-ui:           'Inter', system-ui, sans-serif;    /* UI / labels / body in apps */
+  --font-mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* Display (marketing hero) */
+  --fs-display-xl:     56px;   --lh-display-xl:    64px;
+  --fs-display-lg:     44px;   --lh-display-lg:    52px;
+  --fs-display-md:     40px;   --lh-display-md:    48px;
+  --fs-display-sm:     36px;   --lh-display-sm:    44px;
+  --fs-display-xs:     32px;   --lh-display-xs:    40px;
+  --fs-display-xxs:    24px;   --lh-display-xxs:   32px;
+
+  /* Headings (in-section) */
+  --fs-h-lg:           20px;   --lh-h-lg:          28px;
+  --fs-h-md:           18px;   --lh-h-md:          26px;
+  --fs-h-sm:           16px;   --lh-h-sm:          24px;
+  --fs-overline:       12px;   --lh-overline:      16px;  /* uppercase, +tracking */
+
+  /* Body */
+  --fs-body-lg:        18px;   --lh-body-lg:       28px;
+  --fs-body-md:        16px;   --lh-body-md:       24px;
+  --fs-body-sm:        14px;   --lh-body-sm:       20px;
+  --fs-body-xs:        12px;   --lh-body-xs:       16px;
+
+  /* Labels (uppercase, dense — UI bits) */
+  --fs-label-lg:       18px;
+  --fs-label-md:       16px;
+  --fs-label-sm:       14px;
+  --fs-label-xs:       12px;
+
+  /* Tracking */
+  --tracking-tight:   -0.01em;   /* used on all display sizes */
+  --tracking-overline: 0.06em;
+
+  /* ── Radius ─────────────────────────────────────────────────────────── */
+  --radius-xs:         4px;
+  --radius-sm:         6px;     /* buttons */
+  --radius-md:         8px;     /* small cards */
+  --radius-lg:         10px;    /* inputs */
+  --radius-xl:         12px;    /* form containers */
+  --radius-2xl:        18px;    /* large content cards / image cards */
+  --radius-3xl:        24px;    /* style-guide pages */
+  --radius-full:       9999px;
+
+  /* ── Spacing scale (4-pt) ───────────────────────────────────────────── */
+  --space-1:           4px;
+  --space-2:           8px;
+  --space-3:           12px;
+  --space-4:           16px;
+  --space-5:           20px;
+  --space-6:           24px;
+  --space-8:           32px;
+  --space-10:          40px;
+  --space-12:          48px;
+  --space-16:          64px;
+  --space-20:          80px;
+  --space-24:          96px;
+
+  /* ── Elevation ──────────────────────────────────────────────────────── */
+  --shadow-xs:         0 0 0 1px rgba(18,55,105,0.08);
+  --shadow-sm:         0 0 0 1px rgba(18,55,105,0.08), 0 1px 2px 0 rgba(164,172,185,0.24); /* secondary btn */
+  --shadow-md:         0 1px 3px rgba(9,25,72,0.06), 0 4px 12px rgba(9,25,72,0.06);
+  --shadow-lg:         0 8px 24px -8px rgba(9,25,72,0.13);
+  --shadow-card-hover: 0 12px 32px -10px rgba(9,25,72,0.18);
+
+  /* ── Motion ─────────────────────────────────────────────────────────── */
+  --ease-out:          cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:       cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:          120ms;
+  --dur-base:          200ms;
+  --dur-slow:          400ms;
+
+  /* ── Layout ─────────────────────────────────────────────────────────── */
+  --container-max:     1328px;
+  --gutter:            56px;
+  --header-h:          126px;   /* logo row 90 + hello-bar 36 */
+}
+
+/* ==========================================================================
+   Element defaults (semantic shortcuts)
+   ========================================================================== */
+html, body {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  background: var(--bg-card);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-display-lg);
+  line-height: var(--lh-display-lg);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  text-wrap: balance;
+  margin: 0;
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-display-xs);
+  line-height: var(--lh-display-xs);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  text-wrap: balance;
+  margin: 0;
+}
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-display-xxs);
+  line-height: var(--lh-display-xxs);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin: 0;
+}
+h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h-lg);
+  line-height: var(--lh-h-lg);
+  color: var(--text-primary);
+  margin: 0;
+}
+p, .body {
+  font-family: var(--font-display);
+  font-size: var(--fs-body-md);
+  line-height: var(--lh-body-md);
+  color: var(--text-default);
+  margin: 0;
+}
+.body-lg {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+}
+.body-sm {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body-sm);
+}
+.overline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-overline);
+  line-height: var(--lh-overline);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+code, kbd, .mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+}
+.eyebrow-red {
+  color: var(--le-red);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-overline);
+  font-size: var(--fs-overline);
+}
+
+/* ==========================================================================
+   Utility classes used across cards / kits
+   ========================================================================== */
+.surface-dark   { background: var(--bg-dark);   color: var(--text-inverse); }
+.surface-deep   { background: var(--bg-dark-deep); color: var(--text-inverse); }
+.surface-page   { background: var(--bg-page); }
+.surface-card   { background: var(--bg-card); }
