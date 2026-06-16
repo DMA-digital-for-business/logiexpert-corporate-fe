@@ -2,6 +2,7 @@
 
 import Icon from './Icon';
 import { useLanguage } from '../lib/LanguageContext';
+import { useRoutes } from '../lib/routes';
 
 // CTABanner — full-bleed red conversion block
 
@@ -14,12 +15,15 @@ function CTABanner({
   title,
   body,
   primary,
-  primaryHref = '/contatti',
+  primaryHref,
   secondary,
-  secondaryHref = '/contatti',
+  secondaryHref,
 } = {}) {
   const { lang } = useLanguage();
+  const routes = useRoutes();
   const lb = LABELS[lang];
+  const resolvedPrimaryHref = primaryHref ?? routes.contact;
+  const resolvedSecondaryHref = secondaryHref ?? routes.contact;
 
   const defaultTitle = lang === 'en'
     ? 'Ready to start a logistics project with us?'
@@ -58,14 +62,14 @@ function CTABanner({
             {resolvedBody}
           </p>
           <div style={{ marginTop: 32, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <a href={primaryHref} style={{
+            <a href={resolvedPrimaryHref} style={{
               padding: '0 22px', height: 48, display: 'inline-flex', alignItems: 'center', gap: 10,
               background: '#fff', color: '#0D0D12', borderRadius: 6,
               fontFamily: 'var(--font-ui)', fontWeight: 500, fontSize: 15, textDecoration: 'none'
             }}>
               {resolvedPrimary} <Icon name="arrow" size={16} />
             </a>
-            <a href={secondaryHref} style={{
+            <a href={resolvedSecondaryHref} style={{
               padding: '0 22px', height: 48, display: 'inline-flex', alignItems: 'center', gap: 10,
               background: 'transparent', color: '#fff', borderRadius: 6,
               border: '1px solid rgba(255,255,255,0.4)',

@@ -12,6 +12,7 @@ import Sectors from '../components/Sectors';
 import SoftwareTrio from '../components/SoftwareTrio';
 import StatsBlock from '../components/StatsBlock';
 import { useLanguage } from '../lib/LanguageContext';
+import { useRoutes } from '../lib/routes';
 
 // Azienda — /azienda hub.
 
@@ -140,7 +141,7 @@ const DATA = {
       { l: 'About us', h: '#chi-siamo' },
       { l: 'Our approach', h: '#approccio' },
       { l: 'Expertise', h: '#competenze' },
-      { l: 'Solutions', h: '/soluzioni' },
+      { l: 'Solutions', h: '/en/solutions' },
     ],
     heroFactsLabel: 'LogiExpert at a glance',
     heroFacts: [
@@ -180,7 +181,7 @@ const DATA = {
         tag: 'Pallet · POD · Picking · Fleet',
         icon: 'truck',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/soluzioni',
+        href: '/en/solutions',
       },
       {
         title: 'Retail & Distribution',
@@ -188,7 +189,7 @@ const DATA = {
         tag: 'Inventory · POS · DC · Store',
         icon: 'retail',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/soluzioni',
+        href: '/en/solutions',
       },
       {
         title: 'Manufacturing',
@@ -196,7 +197,7 @@ const DATA = {
         tag: 'Batch · WIP · Labelling · ERP',
         icon: 'factory',
         photo: 'url(/assets/hero-warehouse.jpg)',
-        href: '/soluzioni',
+        href: '/en/solutions',
       },
     ],
     approccioOverline: 'Our approach',
@@ -244,6 +245,7 @@ const DATA = {
 
 export default function Azienda() {
   const { lang } = useLanguage();
+  const routes = useRoutes();
   const d = DATA[lang];
 
   return (
@@ -264,7 +266,7 @@ export default function Azienda() {
             display: 'flex', alignItems: 'center', gap: 8,
             fontFamily: 'var(--font-ui)', fontSize: 13, color: 'rgba(255,255,255,0.6)'
           }}>
-            <a href="/" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>{d.breadcrumb}</a>
+            <a href={routes.home} style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>{d.breadcrumb}</a>
             <Icon name="chevR" size={12} color="rgba(255,255,255,0.4)" />
             <span style={{ color: '#fff', fontFamily: 'var(--font-mono)' }}>{d.pageLabel}</span>
           </div>
@@ -295,7 +297,7 @@ export default function Azienda() {
                 }}>
                   {d.ctaPrimary} <Icon name="arrow" size={16} color="#fff" />
                 </a>
-                <a href="/contatti" style={{
+                <a href={routes.contact} style={{
                   height: 48, padding: '0 22px', display: 'inline-flex', alignItems: 'center', gap: 10,
                   background: 'transparent', color: '#fff', borderRadius: 6,
                   border: '1px solid rgba(255,255,255,0.28)',
@@ -376,7 +378,7 @@ export default function Azienda() {
         heading={d.approccioHeading}
         intro={d.approccioIntro}
         steps={d.approccioSteps}
-        cta={{ label: d.approccioCtaLabel, href: '/contatti' }}
+        cta={{ label: d.approccioCtaLabel, href: routes.contact }}
       />
       <div id="approccio" style={{ position: 'relative', top: -126 }} />
 
@@ -394,7 +396,7 @@ export default function Azienda() {
         overline={d.pilastriOverline}
         heading={d.pilastriHeading}
         intro={d.pilastriIntro}
-        cta={{ label: d.pilastriCtaLabel, href: '/soluzioni' }}
+        cta={{ label: d.pilastriCtaLabel, href: routes.solutions }}
       />
 
       {/* INNOVAZIONE E VISIONE FUTURA */}
@@ -456,7 +458,7 @@ export default function Azienda() {
         overline={d.softwareOverline}
         heading={d.softwareHeading}
         intro={d.softwareIntro}
-        cta={{ label: d.softwareCtaLabel, href: '/soluzioni' }}
+        cta={{ label: d.softwareCtaLabel, href: routes.solutions }}
       />
 
       {/* CTA finale */}
@@ -464,9 +466,9 @@ export default function Azienda() {
         title={d.ctaTitle}
         body={d.ctaBody}
         primary={d.ctaPrimary2}
-        primaryHref="/contatti"
+        primaryHref={routes.contact}
         secondary={d.ctaSecondary2}
-        secondaryHref="/soluzioni"
+        secondaryHref={routes.solutions}
       />
 
       {/* FAQ */}

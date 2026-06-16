@@ -4,6 +4,7 @@ import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 import Icon from '../components/Icon';
 import { useLanguage } from '../lib/LanguageContext';
+import { useRoutes } from '../lib/routes';
 
 // Contatti — pagina contatti dedicata.
 
@@ -121,7 +122,7 @@ const DATA = {
         title: 'Work with us',
         body: 'We are looking for software engineers, system administrators, process consultants and on-site technicians. Send us your CV or check open positions.',
         cta: 'Open positions',
-        ctaHref: '/azienda',
+        ctaHref: '/en/about',
         tag: 'tech · sales · field',
       },
     ],
@@ -140,6 +141,7 @@ const DATA = {
 
 export default function Contatti() {
   const { lang } = useLanguage();
+  const routes = useRoutes();
   const d = DATA[lang];
   const h1Lines = d.h1.split('\n');
 
@@ -161,7 +163,7 @@ export default function Contatti() {
             display: 'flex', alignItems: 'center', gap: 8,
             fontFamily: 'var(--font-ui)', fontSize: 13, color: 'rgba(255,255,255,0.6)'
           }}>
-            <a href="/" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>{d.breadcrumb}</a>
+            <a href={routes.home} style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>{d.breadcrumb}</a>
             <Icon name="chevR" size={12} color="rgba(255,255,255,0.4)" />
             <span style={{ color: '#fff', fontFamily: 'var(--font-mono)' }}>{d.overline}</span>
           </div>

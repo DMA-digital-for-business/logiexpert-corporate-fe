@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#0D0D12"/>
+  <!-- L vertical bar -->
+  <rect x="9" y="7" width="4.5" height="14.5" rx="2" fill="#ffffff"/>
+  <!-- L horizontal foot — red accent -->
+  <rect x="9" y="19" width="14" height="4.5" rx="2" fill="#CD1632"/>
+</svg>

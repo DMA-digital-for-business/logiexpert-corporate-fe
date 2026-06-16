@@ -39,7 +39,7 @@ const DEFAULT_ITEMS = {
       tag: 'Production · Batch · WIP',
       icon: 'factory',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/soluzioni',
+      href: '/en/solutions',
     },
     {
       title: 'Logistics & Transport',
@@ -47,7 +47,7 @@ const DEFAULT_ITEMS = {
       tag: 'Pallet · POD · Picking',
       icon: 'truck',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/soluzioni',
+      href: '/en/solutions',
     },
     {
       title: 'Retail & Distribution',
@@ -55,7 +55,7 @@ const DEFAULT_ITEMS = {
       tag: 'Inventory · POS · DC',
       icon: 'retail',
       photo: 'url(/assets/hero-warehouse.jpg)',
-      href: '/soluzioni',
+      href: '/en/solutions',
     },
   ],
 };

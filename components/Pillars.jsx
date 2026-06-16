@@ -3,6 +3,7 @@
 import Icon from './Icon';
 import { SHOP_URL } from './links';
 import { useLanguage } from '../lib/LanguageContext';
+import { useRoutes } from '../lib/routes';
 
 // Pillars block — the 4 LogiExpert pillars as a horizontal scrolling/grid feature.
 // Props-driven (defaults = Homepage copy) so the block can be reused on /azienda.
@@ -57,7 +58,7 @@ const DEFAULT_ITEMS = {
       body: 'We integrate hardware, software and processes: from warehouse to customer, from ERP to field device. Seamlessly, tailor-made.',
       icon: 'link',
       cta: 'How we work',
-      href: '/azienda',
+      href: '/en/about',
     },
     {
       eyebrow: '03 — Pillar',
@@ -65,7 +66,7 @@ const DEFAULT_ITEMS = {
       body: 'LogiTrace, LogiPod, LogiStock — proprietary software for pallet tracking, proof of delivery and warehouse management.',
       icon: 'layers',
       cta: 'Explore solutions',
-      href: '/soluzioni',
+      href: '/en/solutions',
     },
     {
       eyebrow: '04 — Pillar',
@@ -73,7 +74,7 @@ const DEFAULT_ITEMS = {
       body: 'Support, maintenance, training and specialist consulting. Guaranteed long-term efficiency for every installation.',
       icon: 'cog',
       cta: 'Our services',
-      href: '/contatti',
+      href: '/en/contact',
     },
   ],
 };
@@ -102,12 +103,13 @@ function Pillars({
   id,
 } = {}) {
   const { lang } = useLanguage();
+  const routes = useRoutes();
   const d = DEFAULTS[lang];
   const resolvedItems = items || DEFAULT_ITEMS[lang];
   const resolvedOverline = overline ?? d.overline;
   const resolvedHeading = heading ?? d.heading;
   const resolvedIntro = intro !== undefined ? intro : d.intro;
-  const resolvedCta = cta ?? { label: d.ctaLabel, href: '/azienda' };
+  const resolvedCta = cta ?? { label: d.ctaLabel, href: routes.about };
 
   return (
     <section id={id} style={{ background: '#F2F2F2', padding: '120px 56px' }}>

@@ -4,6 +4,7 @@ import FAQ from '../components/FAQ';
 import Icon from '../components/Icon';
 import LeadForm from '../components/LeadForm';
 import { useLanguage } from '../lib/LanguageContext';
+import { useRoutes } from '../lib/routes';
 
 // SoluzioneDetail — 3rd-level page: /soluzioni/<slug>
 
@@ -54,13 +55,14 @@ const UI = {
 
 export default function SoluzioneDetail({ slug = 'tracciabilita-pallet' }) {
   const { lang } = useLanguage();
+  const routes = useRoutes();
   const ui = UI[lang];
   const rawData = SOLUZIONI_DATA[slug];
   if (!rawData) {
     return (
       <main style={{ padding: '120px 56px', textAlign: 'center' }}>
         <h1>{ui.notFound}</h1>
-        <a href="/soluzioni">{ui.backToSolutions}</a>
+        <a href={routes.solutions}>{ui.backToSolutions}</a>
       </main>
     );
   }
@@ -89,9 +91,9 @@ export default function SoluzioneDetail({ slug = 'tracciabilita-pallet' }) {
             display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
             fontFamily: 'var(--font-ui)', fontSize: 13, color: 'rgba(255,255,255,0.6)'
           }}>
-            <a href="/" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>Home</a>
+            <a href={routes.home} style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>Home</a>
             <Icon name="chevR" size={12} color="rgba(255,255,255,0.4)" />
-            <a href="/soluzioni" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>{ui.solutionsLabel}</a>
+            <a href={routes.solutions} style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>{ui.solutionsLabel}</a>
             <Icon name="chevR" size={12} color="rgba(255,255,255,0.4)" />
             <span style={{ color: '#fff', fontFamily: 'var(--font-mono)' }}>{title}</span>
           </div>
@@ -114,7 +116,7 @@ export default function SoluzioneDetail({ slug = 'tracciabilita-pallet' }) {
               </p>
 
               <div style={{ marginTop: 36, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <a href="/contatti" style={{
+                <a href={routes.contact} style={{
                   height: 48, padding: '0 22px', display: 'inline-flex', alignItems: 'center', gap: 10,
                   background: 'var(--le-red)', color: '#fff', borderRadius: 6,
                   fontFamily: 'var(--font-ui)', fontWeight: 500, fontSize: 15,
@@ -478,7 +480,7 @@ export default function SoluzioneDetail({ slug = 'tracciabilita-pallet' }) {
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>
             {sectors.map(s => (
-              <a key={s.t} href={s.href} style={{
+              <a key={s.t} href={routes.about} style={{
                 padding: 28, borderRadius: 14, background: '#fff',
                 display: 'flex', flexDirection: 'column', gap: 14,
                 textDecoration: 'none', color: '#0D0D12',

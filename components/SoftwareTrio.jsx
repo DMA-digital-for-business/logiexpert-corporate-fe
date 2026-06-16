@@ -47,7 +47,7 @@ const DEFAULT_ITEMS = {
       body: 'Tracking of pallets, LDUs and reusable assets. Asset notes, reconciliation and compensation between supply chain actors.',
       icon: 'pallet',
       tone: 'dark',
-      href: '/soluzioni/tracciabilita-pallet',
+      href: '/en/solutions/tracciabilita-pallet',
     },
     {
       name: 'LogiPod',
@@ -55,7 +55,7 @@ const DEFAULT_ITEMS = {
       body: 'Electronic signature, delivery photo, geolocation. Structured PODs that close the invoice cycle.',
       icon: 'send',
       tone: 'red',
-      href: '/soluzioni/proof-of-delivery',
+      href: '/en/solutions/proof-of-delivery',
     },
     {
       name: 'LogiStock',
@@ -63,7 +63,7 @@ const DEFAULT_ITEMS = {
       body: 'Proprietary WMS for complex warehouses. Locations, missions, terminal-guided picking.',
       icon: 'database',
       tone: 'dark',
-      href: '/soluzioni/wms',
+      href: '/en/solutions/wms',
     },
     {
       name: 'LogiDealer',
@@ -71,7 +71,7 @@ const DEFAULT_ITEMS = {
       body: 'Solution for managing dealer networks and distribution channels. Contact us for more information.',
       icon: 'building',
       tone: 'light',
-      href: '/contatti',
+      href: '/en/contact',
     },
   ],
 };

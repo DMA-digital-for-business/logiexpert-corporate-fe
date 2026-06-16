@@ -20,6 +20,7 @@ const UTIL_LABELS = {
 function UtilityBar() {
   const { lang, setLanguage } = useLanguage();
   const u = UTIL_LABELS[lang];
+  const contattiHref = lang === 'en' ? '/en/contact' : '/contatti';
   return (
     <div style={{
       height: 36, background: '#0D0D12', color: 'rgba(255,255,255,0.78)',
@@ -31,7 +32,7 @@ function UtilityBar() {
       }}>
         <Icon name="phone" size={13} color="#fff" /> {u.supporto}
       </a>
-      <a href="/contatti" style={{ color: 'rgba(255,255,255,0.78)', textDecoration: 'none' }}>
+      <a href={contattiHref} style={{ color: 'rgba(255,255,255,0.78)', textDecoration: 'none' }}>
         {u.aree}
       </a>
       <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" style={{
@@ -81,6 +82,8 @@ function Header({ active = 'home' }) {
   const { lang } = useLanguage();
   const [open, setOpen] = useState(false);
   const nl = NAV_LABELS[lang];
+  const isEn = lang === 'en';
+  const homeHref = isEn ? '/en' : '/';
   const nav = [
     { id: 'soluzioni',  label: nl.soluzioni },
     // { id: 'sysint',  label: nl.sysint },   // no dedicated page yet
@@ -94,21 +97,21 @@ function Header({ active = 'home' }) {
       <UtilityBar />
 
       <div style={{
-        height: 140, padding: '0 56px',
+        height: 100, padding: '0 56px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24
       }}>
-        <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/assets/logo-logiexpert.png" style={{ height: 100 }} alt="LogiExpert" />
+        <a href={homeHref} style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/assets/logo-logiexpert.png" style={{ height: 120 }} alt="LogiExpert" />
         </a>
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           {nav.map(n => {
             const href =
-              n.id === 'soluzioni'  ? '/soluzioni'
-              : n.id === 'contatti' ? '/contatti'
-              : n.id === 'azienda'  ? '/azienda'
+              n.id === 'soluzioni'  ? (isEn ? '/en/solutions'  : '/soluzioni')
+              : n.id === 'contatti' ? (isEn ? '/en/contact'    : '/contatti')
+              : n.id === 'azienda'  ? (isEn ? '/en/about'      : '/azienda')
               : n.id === 'ecommerce' ? SHOP_URL
-              : '/';
+              : homeHref;
             const ext = href.startsWith('http');
 
             return (
@@ -168,11 +171,11 @@ function Header({ active = 'home' }) {
             </div>
             {nav.map(n => {
               const href =
-                n.id === 'soluzioni'  ? '/soluzioni'
-                : n.id === 'contatti' ? '/contatti'
-                : n.id === 'azienda'  ? '/azienda'
+                n.id === 'soluzioni'  ? (isEn ? '/en/solutions'  : '/soluzioni')
+                : n.id === 'contatti' ? (isEn ? '/en/contact'    : '/contatti')
+                : n.id === 'azienda'  ? (isEn ? '/en/about'      : '/azienda')
                 : n.id === 'ecommerce' ? SHOP_URL
-                : '/';
+                : homeHref;
               const ext = href.startsWith('http');
 
               return (

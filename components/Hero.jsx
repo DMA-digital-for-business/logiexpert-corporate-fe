@@ -1,9 +1,11 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Button from './Button';
 import CountUp from './CountUp';
 import Icon from './Icon';
 import { useLanguage } from '../lib/LanguageContext';
+import { useRoutes } from '../lib/routes';
 
 // Hero — dark left panel w/ living amber aurora + animated supply-chain motif,
 // photographic right panel w/ floating product chips.
@@ -41,7 +43,45 @@ const CONTENT = {
 
 function Hero() {
   const { lang } = useLanguage();
+  const routes = useRoutes();
   const c = CONTENT[lang];
+  const videoRef = useRef(null);
+
+  // Load + autoplay the hero video only on desktop and only when the user has
+  // not requested reduced motion. On mobile/tablet (or reduced-motion) we never
+  // set `src`, so the 10 MB file is never downloaded — the <video> just shows
+  // its poster (the same warehouse image used before). This keeps the LCP fast
+  // and avoids burning mobile data on a decorative background.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const desktop = window.matchMedia('(min-width: 901px)');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const sync = () => {
+      const shouldPlay = desktop.matches && !reduced.matches;
+      if (shouldPlay) {
+        if (!v.src) {
+          v.src = '/assets/header_video.mp4';
+          v.load();
+        }
+        v.muted = true;
+        v.play().catch(() => {});
+      } else if (v.src) {
+        // Switched to mobile / reduced-motion after load → fall back to poster.
+        v.pause();
+      }
+    };
+
+    sync();
+    desktop.addEventListener('change', sync);
+    reduced.addEventListener('change', sync);
+    return () => {
+      desktop.removeEventListener('change', sync);
+      reduced.removeEventListener('change', sync);
+    };
+  }, []);
 
   return (
     <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 640, background: '#101010', position: 'relative' }}>
@@ -90,8 +130,8 @@ function Hero() {
           </p>
 
           <div style={{ marginTop: 36, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <Button href="/soluzioni" variant="light">{c.ctaPrimary}</Button>
-            <Button href="/contatti" variant="ghost" icon={null}>{c.ctaSecondary}</Button>
+            <Button href={routes.solutions} variant="light">{c.ctaPrimary}</Button>
+            <Button href={routes.contact} variant="ghost" icon={null}>{c.ctaSecondary}</Button>
           </div>
 
           <div style={{ marginTop: 56, display: 'flex', gap: 36, color: 'rgba(255,255,255,0.7)', fontFamily: 'var(--font-display)', fontSize: 14 }}>
@@ -105,17 +145,42 @@ function Hero() {
         </div>
       </div>
 
-      {/* Right — photo with floating overlay chips */}
+      {/* Right — looping hero video w/ floating overlay chips */}
       <div className="le-clip" style={{
-        position: 'relative', overflow: 'hidden',
-        background: 'radial-gradient(120% 120% at 100% 100%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%), linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.08)), url(/assets/hero-warehouse.jpg) center/cover no-repeat'
+        position: 'relative', overflow: 'hidden', background: '#101010'
       }}>
+        {/* Background video — poster paints instantly, src is attached by JS on
+            desktop only (see useEffect). objectFit:cover fills the panel. */}
+        <video
+          ref={videoRef}
+          poster="/assets/hero-warehouse.jpg"
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          tabIndex={-1}
+          style={{
+            position: 'absolute', inset: 0, zIndex: 0,
+            width: '100%', height: '100%', objectFit: 'cover',
+            pointerEvents: 'none'
+          }}
+        />
+        {/* Overlay — left horizontal fade blends the video edge into the dark
+            text panel (no hard seam), plus a bottom-right vignette for caption
+            legibility. */}
+        <div aria-hidden="true" style={{
+          position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+          background:
+            'linear-gradient(90deg, #101010 0%, rgba(16,16,16,0.88) 9%, rgba(16,16,16,0.45) 26%, rgba(16,16,16,0) 48%), ' +
+            'radial-gradient(120% 120% at 100% 100%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%)'
+        }} />
         <div className="le-aurora" style={{
-          position: 'absolute', right: '-15%', top: '-15%', width: '70%', height: '70%',
+          position: 'absolute', right: '-15%', top: '-15%', width: '70%', height: '70%', zIndex: 2,
           pointerEvents: 'none',
           background: 'radial-gradient(circle, rgba(205,22,50,0.35) 0%, rgba(205,22,50,0) 65%)'
         }} />
-        <div style={{ position: 'absolute', left: 36, top: 56, right: 36, display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'flex-start' }}>
+        <div style={{ position: 'absolute', zIndex: 3, left: 36, top: 56, right: 36, display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'flex-start' }}>
           {c.chips.map((t, i) => (
             <div key={t} className="le-float" style={{
               padding: '10px 16px', background: 'rgba(255,255,255,0.92)', borderRadius: 9999,
@@ -132,7 +197,7 @@ function Hero() {
           ))}
         </div>
 
-        <div style={{ position: 'absolute', right: 36, bottom: 36, color: '#fff', maxWidth: 320, textAlign: 'right' }}>
+        <div style={{ position: 'absolute', zIndex: 3, right: 36, bottom: 36, color: '#fff', maxWidth: 320, textAlign: 'right' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'flex-end', fontFamily: 'var(--font-display)', fontSize: 13, color: 'rgba(255,255,255,0.85)' }}>
             <span style={{ width: 32, height: 1, background: 'rgba(255,255,255,0.6)' }} />
             {c.caption}

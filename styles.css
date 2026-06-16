@@ -228,13 +228,13 @@ textarea:focus {
   body [style*='repeat(9, 1fr)'] {
     grid-template-columns: 1fr !important;
   }
-  /* keep 4-up as 2-up down here; footer 5-up → 2-up */
-  body [style*='repeat(4, 1fr)'],
-  /* footer is now 3-col (1.4fr 1fr 1fr) — handled by the 1fr 1fr selector above */
+  /* 4-up grids → single column (was accidentally merged into the gap rule) */
+  body [style*='repeat(4, 1fr)'] { grid-template-columns: 1fr !important; }
 
   /* Shrink oversized gaps */
   body [style*='gap:80px'],
   body [style*='gap:64px'] { gap: 32px !important; }
+  body [style*='gap:48px'] { gap: 24px !important; }
 
   /* Home hero: stack and give the photo panel a real height */
   body section[style*='min-height:640px'] {
@@ -258,6 +258,17 @@ textarea:focus {
   body [style*='font-size:30px'],
   body [style*='font-size:28px'],
   body [style*='font-size:26px'] { font-size: 22px !important; line-height: 28px !important; }
+  /* Extra-large display type (e.g. software name in SoluzioneDetail) */
+  body [style*='font-size:64px'] { font-size: 40px !important; line-height: 48px !important; }
+
+  /* Section intro rows: heading left + secondary item right → stack on mobile.
+     Targets the flex space-between header pattern shared across Pillars, Sectors,
+     SoftwareTrio, StatsBlock, CosaFacciamo, Contatti channels. */
+  body [style*='align-items:flex-end'][style*='justify-content:space-between'] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
 
   /* Header → mobile: hide utility bar + nav, show burger */
   body header > div:first-child { display: none !important; }
@@ -270,12 +281,14 @@ textarea:focus {
   body [style*='repeat(9, 1fr)'] > div:nth-child(even) svg { transform: rotate(90deg) !important; }
   body [style*='repeat(9, 1fr)'] > div:nth-child(even) { min-height: 24px !important; padding: 8px 0 !important; }
 
-  /* Roomy rounded cards / forms → tighter padding */
-  body article[style*='padding: 36px'],
-  body [style*='border-radius: 24px'][style*='padding: 64px'],
+  /* Roomy rounded cards / forms → tighter padding.
+     React serialises inline styles without space after colon ("padding:36px", not "padding: 36px"),
+     so attribute selectors must match that form. The old selectors with spaces never fired. */
+  body article[style*='padding:36px'],
+  body [style*='border-radius:24px'][style*='padding:64px'],
   body form[style*='padding:48px'],
-  body [style*='border-radius: 18px'][style*='padding: 36px'],
-  body [style*='padding: 32px'][style*='border-radius: 18px'] { padding: 24px !important; }
+  body [style*='border-radius:18px'][style*='padding:36px'],
+  body [style*='padding:32px'][style*='border-radius:18px'] { padding: 24px !important; }
 }
 
 /* ---------- Phones (<= 560px) ---------- */

@@ -6,18 +6,17 @@ import Header from './Header';
 import ScrollReveal from './ScrollReveal';
 
 function getActiveMenu(pathname) {
-  if (pathname === '/soluzioni' || pathname.startsWith('/soluzioni/')) {
+  if (pathname === '/soluzioni' || pathname.startsWith('/soluzioni/') ||
+      pathname === '/en/solutions' || pathname.startsWith('/en/solutions/')) {
     return 'soluzioni';
   }
-
-  if (pathname === '/contatti') {
+  if (pathname === '/contatti' || pathname === '/en/contact') {
     return 'contatti';
   }
-
-  if (pathname === '/azienda' || pathname.startsWith('/azienda/')) {
+  if (pathname === '/azienda' || pathname.startsWith('/azienda/') ||
+      pathname === '/en/about' || pathname.startsWith('/en/about/')) {
     return 'azienda';
   }
-
   return 'home';
 }
 

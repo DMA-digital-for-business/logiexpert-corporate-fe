@@ -39,7 +39,7 @@ function LeadForm() {
 
   return (
     <section id="contatti" style={{ background: '#F2F2F2', padding: '80px 56px 96px' }}>
-      <div style={{
+      <div className="le-clip" style={{
         maxWidth: 1328, margin: '0 auto',
         background: '#fff', borderRadius: 24, overflow: 'hidden',
         display: 'grid', gridTemplateColumns: '1fr 1.1fr', minHeight: 640,
@@ -52,8 +52,8 @@ function LeadForm() {
         }}>
           <div className="le-glow" style={{
             position: 'absolute', inset: 0, pointerEvents: 'none',
-            background: 'radial-gradient(120% 100% at 0% 100%, #FFE9C5 0%, #B0220C 14%, rgba(176,34,12,0) 42%, rgba(0,0,0,0) 100%)',
-            opacity: 0.7, '--glow-dur': '5s'
+            background: 'radial-gradient(80% 70% at 0% 100%, rgba(205,22,50,0.45) 0%, rgba(176,34,12,0.2) 40%, rgba(0,0,0,0) 70%)',
+            opacity: 0.6, '--glow-dur': '6s'
           }} />
           <div style={{ position: 'relative' }}>
             <div className="overline" style={{ color: 'var(--le-red)', marginBottom: 16 }}>

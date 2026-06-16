@@ -3,6 +3,7 @@
 import Icon from './Icon';
 import Spotlight from './Spotlight';
 import { useLanguage } from '../lib/LanguageContext';
+import { useRoutes } from '../lib/routes';
 
 // Approach / How we work — numbered steps on a dark surface.
 
@@ -44,12 +45,13 @@ function Approach({
   cta,
 } = {}) {
   const { lang } = useLanguage();
+  const routes = useRoutes();
   const d = DEFAULTS[lang];
   const resolvedSteps = steps || DEFAULT_STEPS[lang];
   const resolvedOverline = overline ?? d.overline;
   const resolvedHeading = heading ?? d.heading;
   const resolvedIntro = intro !== undefined ? intro : d.intro;
-  const resolvedCta = cta ?? { label: d.ctaLabel, href: '/azienda' };
+  const resolvedCta = cta ?? { label: d.ctaLabel, href: routes.about };
 
   return (
     <section className="le-clip" style={{ background: '#0D0D12', color: '#fff', padding: '120px 56px', position: 'relative', overflow: 'hidden' }}>

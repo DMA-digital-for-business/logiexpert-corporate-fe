@@ -6,6 +6,7 @@ import Icon from '../components/Icon';
 import Spotlight from '../components/Spotlight';
 import LeadForm from '../components/LeadForm';
 import { useLanguage } from '../lib/LanguageContext';
+import { useRoutes } from '../lib/routes';
 
 // SoluzioniHub — /soluzioni entry point.
 
@@ -109,7 +110,7 @@ const DATA = {
       {
         n: '01',
         title: 'Pallet Tracking',
-        slug: '/soluzioni/tracciabilita-pallet',
+        slug: '/en/solutions/tracciabilita-pallet',
         body: 'Identify, track and reconcile every pallet — internal and in exchange. Loss reduction, immediate anomalies, pallet count always balanced with customers and suppliers.',
         bullets: ['EPAL · CHEP labels', 'SSCC / GS1-128 encoding', 'Real-time anomalies'],
         software: { name: 'LogiTrace', desc: 'Proprietary software for end-to-end pallet tracking.' },
@@ -118,7 +119,7 @@ const DATA = {
       {
         n: '02',
         title: 'Digital Proof of Delivery',
-        slug: '/soluzioni/proof-of-delivery',
+        slug: '/en/solutions/proof-of-delivery',
         body: 'Replaces the paper delivery note with a signed, geolocated and photographed confirmation. Invoice cycle closure without lost slips, tracked disputes.',
         bullets: ['Electronic signature', 'Delivery photo · geo · timestamp', 'TMS / ERP integration'],
         software: { name: 'LogiPod', desc: 'Mobile app + backoffice console for proof of delivery.' },
@@ -127,7 +128,7 @@ const DATA = {
       {
         n: '03',
         title: 'Warehouse Management System',
-        slug: '/soluzioni/wms',
+        slug: '/en/solutions/wms',
         body: 'Manages locations, missions and terminal-guided picking. Designed for complex warehouses with non-standard flows, kitting, cross-docking and cycle counting.',
         bullets: ['Dynamic locations', 'Terminal-guided picking', 'Cycle counting'],
         software: { name: 'LogiStock', desc: 'Proprietary WMS, scalable from 1 to N sites.' },
@@ -136,7 +137,7 @@ const DATA = {
       {
         n: '04',
         title: 'AIDC & Mobility Solutions',
-        slug: '/soluzioni/aidc-mobility',
+        slug: '/en/solutions/aidc-mobility',
         body: 'Automatic identification and industrial mobility: barcode, RFID, voice picking, rugged terminals. End-to-end hardware and configuration, maintained by our services team.',
         bullets: ['Barcode & RFID', 'Voice & vision picking', 'Rugged mobile devices'],
         software: { name: 'Hardware partner', desc: 'Zebra · Honeywell · Datalogic, integrated with LogiExpert software.' },
@@ -144,10 +145,10 @@ const DATA = {
       },
     ],
     platforms: [
-      { name: 'LogiTrace', label: 'Pallet tracking and asset management', href: '/soluzioni/tracciabilita-pallet', live: true },
-      { name: 'LogiPod', label: 'Digital Proof of Delivery', href: '/soluzioni/proof-of-delivery', live: true },
-      { name: 'LogiDealer', label: 'Dealer network and distribution channel management', href: '/contatti', live: false },
-      { name: 'LogiStock', label: 'Warehouse Management System', href: '/soluzioni/wms', live: false },
+      { name: 'LogiTrace', label: 'Pallet tracking and asset management', href: '/en/solutions/tracciabilita-pallet', live: true },
+      { name: 'LogiPod', label: 'Digital Proof of Delivery', href: '/en/solutions/proof-of-delivery', live: true },
+      { name: 'LogiDealer', label: 'Dealer network and distribution channel management', href: '/en/contact', live: false },
+      { name: 'LogiStock', label: 'Warehouse Management System', href: '/en/solutions/wms', live: false },
     ],
     faqItems: [
       {
@@ -172,6 +173,7 @@ const DATA = {
 
 export default function SoluzioniHub() {
   const { lang } = useLanguage();
+  const routes = useRoutes();
   const d = DATA[lang];
 
   return (
@@ -188,7 +190,7 @@ export default function SoluzioniHub() {
             display: 'flex', alignItems: 'center', gap: 8,
             fontFamily: 'var(--font-ui)', fontSize: 13, color: 'rgba(255,255,255,0.6)'
           }}>
-            <a href="/" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>{d.breadcrumb}</a>
+            <a href={routes.home} style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>{d.breadcrumb}</a>
             <Icon name="chevR" size={12} color="rgba(255,255,255,0.4)" />
             <span style={{ color: '#fff', fontFamily: 'var(--font-mono)' }}>{d.pageLabel}</span>
           </div>

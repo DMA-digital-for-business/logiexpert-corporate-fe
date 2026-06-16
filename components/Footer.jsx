@@ -36,17 +36,17 @@ const CONTENT = {
     categories: ['Printers', 'Terminals', 'Scanners', 'POS', 'RFID', 'Sanitizable', 'Consumables', 'Software', 'Services'],
     cols: [
       { title: 'Solutions', links: [
-        { l: 'Pallet Tracking',       h: '/soluzioni/tracciabilita-pallet' },
-        { l: 'Proof of Delivery',     h: '/soluzioni/proof-of-delivery' },
-        { l: 'WMS — LogiStock',       h: '/soluzioni/wms' },
-        { l: 'AIDC & Mobility',       h: '/soluzioni/aidc-mobility' },
+        { l: 'Pallet Tracking',       h: '/en/solutions/tracciabilita-pallet' },
+        { l: 'Proof of Delivery',     h: '/en/solutions/proof-of-delivery' },
+        { l: 'WMS — LogiStock',       h: '/en/solutions/wms' },
+        { l: 'AIDC & Mobility',       h: '/en/solutions/aidc-mobility' },
       ]},
       // Industries column removed — hash anchors (/#manifatturiero etc.) do not exist yet
       { title: 'Company', links: [
-        { l: 'About us',          h: '/azienda#chi-siamo' },
-        { l: 'Our approach',      h: '/azienda#approccio' },
-        { l: 'Contact',           h: '/contatti' },
-        { l: 'Work with us',      h: '/contatti' },
+        { l: 'About us',          h: '/en/about#chi-siamo' },
+        { l: 'Our approach',      h: '/en/about#approccio' },
+        { l: 'Contact',           h: '/en/contact' },
+        { l: 'Work with us',      h: '/en/contact' },
       ]},
       // Legal column removed — legal pages not yet available
     ],
