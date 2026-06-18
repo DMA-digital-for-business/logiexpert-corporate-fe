@@ -101,7 +101,7 @@ function Header({ active = 'home' }) {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24
       }}>
         <a href={homeHref} style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/assets/logo-logiexpert.png" style={{ height: 120 }} alt="LogiExpert" />
+          <img src="/assets/logo-logiexpert.png" style={{ height: 150 }} alt="LogiExpert" />
         </a>
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
