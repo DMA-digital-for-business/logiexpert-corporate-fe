@@ -35,7 +35,7 @@ function UtilityBar() {
       <a href={contattiHref} style={{ color: 'rgba(255,255,255,0.78)', textDecoration: 'none' }}>
         {u.aree}
       </a>
-      <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" style={{
+      <a href={SHOP_URL} target="_self" rel="noopener noreferrer" style={{
         display: 'inline-flex', alignItems: 'center', gap: 8,
         color: '#fff', textDecoration: 'none'
       }}>
