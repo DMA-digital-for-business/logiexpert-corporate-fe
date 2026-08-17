@@ -9,14 +9,20 @@ const IT_TO_EN = {
   '/':          '/en',
   '/soluzioni': '/en/solutions',
   '/azienda':   '/en/about',
+  '/azienda/lavora-con-noi': '/en/about/careers',
   '/contatti':  '/en/contact',
+  '/grazie':    '/en/thank-you',
+  '/privacy-policy': '/en/privacy-policy',
 };
 
 const EN_TO_IT = {
   '/en':            '/',
   '/en/solutions':  '/soluzioni',
   '/en/about':      '/azienda',
+  '/en/about/careers': '/azienda/lavora-con-noi',
   '/en/contact':    '/contatti',
+  '/en/thank-you':  '/grazie',
+  '/en/privacy-policy': '/privacy-policy',
 };
 
 function getAlternateUrl(pathname, targetLang) {

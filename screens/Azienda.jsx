@@ -461,6 +461,54 @@ export default function Azienda() {
         cta={{ label: d.softwareCtaLabel, href: routes.solutions }}
       />
 
+      {/* TEASER — Lavora con noi */}
+      <section style={{ background: '#fff', padding: '0 56px 120px' }}>
+        <div className="le-clip" style={{
+          maxWidth: 1328, margin: '0 auto',
+          background: '#0D0D12', color: '#fff', borderRadius: 24, padding: 56,
+          position: 'relative', overflow: 'hidden',
+          display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 48, alignItems: 'center',
+        }}>
+          <div className="le-glow" style={{
+            position: 'absolute', right: '-8%', top: '-40%', width: '55%', height: '180%',
+            background: 'radial-gradient(50% 50% at 60% 50%, rgba(205,22,50,0.4) 0%, rgba(0,0,0,0) 65%)',
+            pointerEvents: 'none',
+          }} />
+          <div style={{ position: 'relative' }}>
+            <div className="overline" style={{ color: 'var(--le-red)', marginBottom: 16 }}>
+              {lang === 'en' ? 'Careers' : 'Lavora con noi'}
+            </div>
+            <h2 style={{
+              fontFamily: 'var(--font-display)', fontWeight: 500,
+              fontSize: 36, lineHeight: '44px', letterSpacing: '-0.012em', color: '#fff', margin: 0, maxWidth: 620,
+            }}>
+              {lang === 'en'
+                ? 'Grow with us in digital logistics.'
+                : 'Cresci con noi nella logistica digitale.'}
+            </h2>
+            <p style={{
+              marginTop: 16, fontFamily: 'var(--font-display)', fontSize: 17, lineHeight: '26px',
+              color: 'rgba(255,255,255,0.8)', maxWidth: 560,
+            }}>
+              {lang === 'en'
+                ? 'We are looking for people who want to work on proprietary software, system integration and B2B eCommerce. Discover our open positions.'
+                : 'Cerchiamo persone che vogliano lavorare su software proprietari, system integration ed eCommerce B2B. Scopri le posizioni aperte.'}
+            </p>
+          </div>
+          <div style={{ position: 'relative', display: 'flex', justifyContent: 'flex-start' }}>
+            <a href={routes.careers} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 10,
+              height: 52, padding: '0 28px',
+              background: 'var(--le-red)', color: '#fff', borderRadius: 8,
+              fontFamily: 'var(--font-ui)', fontWeight: 500, fontSize: 15, textDecoration: 'none',
+              boxShadow: '0 2px 4px rgba(149,18,43,0.25)',
+            }}>
+              {lang === 'en' ? 'Open positions' : 'Posizioni aperte'} <Icon name="arrow" size={16} color="#fff" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA finale */}
       <CTABanner
         title={d.ctaTitle}

@@ -27,6 +27,8 @@ export default function sitemap() {
       pair(`/soluzioni/${slug}`, `/en/solutions/${slug}`, { changeFrequency: 'monthly', priority: 0.85 }, now)
     ),
     ...pair('/azienda',  '/en/about',   { changeFrequency: 'monthly', priority: 0.7 }, now),
+    ...pair('/azienda/lavora-con-noi', '/en/about/careers', { changeFrequency: 'weekly', priority: 0.7 }, now),
     ...pair('/contatti', '/en/contact', { changeFrequency: 'yearly',  priority: 0.6 }, now),
+    ...pair('/privacy-policy', '/en/privacy-policy', { changeFrequency: 'yearly', priority: 0.2 }, now),
   ];
 }

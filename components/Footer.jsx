@@ -23,10 +23,11 @@ const CONTENT = {
         { l: 'Chi siamo',           h: '/azienda#chi-siamo' },
         { l: 'Il nostro approccio', h: '/azienda#approccio' },
         { l: 'Contatti',            h: '/contatti' },
-        { l: 'Lavora con noi',      h: '/contatti' },
+        { l: 'Lavora con noi',      h: '/azienda/lavora-con-noi' },
       ]},
       // Legal column removed — pagine legali non ancora disponibili
     ],
+    privacy: { l: 'Privacy Policy', h: '/privacy-policy' },
     copyright: '© LogiExpert 2026 — Tutti i diritti riservati',
     tagline: 'System integrator · Software house per la logistica digitale',
   },
@@ -46,10 +47,11 @@ const CONTENT = {
         { l: 'About us',          h: '/en/about#chi-siamo' },
         { l: 'Our approach',      h: '/en/about#approccio' },
         { l: 'Contact',           h: '/en/contact' },
-        { l: 'Work with us',      h: '/en/contact' },
+        { l: 'Work with us',      h: '/en/about/careers' },
       ]},
       // Legal column removed — legal pages not yet available
     ],
+    privacy: { l: 'Privacy Policy', h: '/en/privacy-policy' },
     copyright: '© LogiExpert 2026 — All rights reserved',
     tagline: 'System integrator · Software house for digital logistics',
   },
@@ -132,9 +134,12 @@ function Footer() {
 
         <div style={{ height: 1, background: 'rgba(255,255,255,0.12)', margin: '36px 0 24px' }} />
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--font-display)', fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap', fontFamily: 'var(--font-display)', fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>
           <span>{c.copyright}</span>
-          <span>{c.tagline}</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 16 }}>
+            <a href={c.privacy.h} style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>{c.privacy.l}</a>
+            <span>{c.tagline}</span>
+          </span>
         </div>
       </div>
     </footer>
