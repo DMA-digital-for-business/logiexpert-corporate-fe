@@ -24,6 +24,7 @@ const CONTENT = {
         { l: 'Il nostro approccio', h: '/azienda#approccio' },
         { l: 'Contatti',            h: '/contatti' },
         { l: 'Lavora con noi',      h: '/azienda/lavora-con-noi' },
+        { l: 'Guida all’acquisto',  h: '/guida-acquisto' },
       ]},
       // Legal column removed — pagine legali non ancora disponibili
     ],
@@ -48,6 +49,7 @@ const CONTENT = {
         { l: 'Our approach',      h: '/en/about#approccio' },
         { l: 'Contact',           h: '/en/contact' },
         { l: 'Work with us',      h: '/en/about/careers' },
+        { l: 'Purchase guide',    h: '/guida-acquisto' },
       ]},
       // Legal column removed — legal pages not yet available
     ],

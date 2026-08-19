@@ -29,6 +29,8 @@ export default function sitemap() {
     ...pair('/azienda',  '/en/about',   { changeFrequency: 'monthly', priority: 0.7 }, now),
     ...pair('/azienda/lavora-con-noi', '/en/about/careers', { changeFrequency: 'weekly', priority: 0.7 }, now),
     ...pair('/contatti', '/en/contact', { changeFrequency: 'yearly',  priority: 0.6 }, now),
+    // Guida all'acquisto — pagina pubblica solo in italiano (nessun alternate EN).
+    { url: `${BASE}/guida-acquisto`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     ...pair('/privacy-policy', '/en/privacy-policy', { changeFrequency: 'yearly', priority: 0.2 }, now),
   ];
 }
