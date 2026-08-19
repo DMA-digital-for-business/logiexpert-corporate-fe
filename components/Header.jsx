@@ -1,12 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Icon from './Icon';
 import { SHOP_URL } from './links';
 import { useLanguage } from '../lib/LanguageContext';
 
 // Header — corporate site. No hello-bar, no search. Slim utility bar (lang + support + shop link)
 // on top, white main row below with logo / centered nav / Contattaci CTA.
+//
+// Nav items that own real sub-pages carry a `children` array and render a dropdown
+// (desktop hover panel / mobile accordion) with a chevron. Items without sub-pages
+// (external Shop, Contatti) render as a plain link with no chevron.
 
 const NAV_LABELS = {
   it: { soluzioni: 'Soluzioni', ecommerce: 'eCommerce B2B', azienda: 'Azienda', contatti: 'Contatti' },
@@ -15,6 +19,38 @@ const NAV_LABELS = {
 const UTIL_LABELS = {
   it: { supporto: 'Supporto', aree: 'Aree riservate clienti', shop: 'Shop B2B' },
   en: { supporto: 'Support', aree: 'Customer portal', shop: 'B2B Shop' },
+};
+
+// Sub-page menus, per language. Each entry is a reachable page or in-page section.
+const SUBMENUS = {
+  it: {
+    soluzioni: [
+      { label: 'Tutte le soluzioni',        href: '/soluzioni' },
+      { label: 'Tracciabilità Pallet & Asset', href: '/soluzioni/tracciabilita-pallet' },
+      { label: 'Proof of Delivery',         href: '/soluzioni/proof-of-delivery' },
+      { label: 'Warehouse Management (WMS)', href: '/soluzioni/wms' },
+      { label: 'AIDC & Mobility',           href: '/soluzioni/aidc-mobility' },
+    ],
+    azienda: [
+      { label: 'Chi siamo',           href: '/azienda#chi-siamo' },
+      { label: 'Il nostro approccio', href: '/azienda#approccio' },
+      { label: 'Lavora con noi',      href: '/azienda/lavora-con-noi' },
+    ],
+  },
+  en: {
+    soluzioni: [
+      { label: 'All solutions',              href: '/en/solutions' },
+      { label: 'Pallet & Asset Traceability', href: '/en/solutions/tracciabilita-pallet' },
+      { label: 'Digital Proof of Delivery',  href: '/en/solutions/proof-of-delivery' },
+      { label: 'Warehouse Management (WMS)',  href: '/en/solutions/wms' },
+      { label: 'AIDC & Mobility',            href: '/en/solutions/aidc-mobility' },
+    ],
+    azienda: [
+      { label: 'About us',     href: '/en/about#chi-siamo' },
+      { label: 'Our approach', href: '/en/about#approccio' },
+      { label: 'Work with us', href: '/en/about/careers' },
+    ],
+  },
 };
 
 function UtilityBar() {
@@ -78,20 +114,145 @@ function UtilityBar() {
   );
 }
 
+// Desktop nav item — with optional hover dropdown for items that own sub-pages.
+function DesktopNavItem({ item, active }) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef(null);
+  const isActive = active === item.id;
+  const hasChildren = item.children && item.children.length > 0;
+  const accent = isActive ? 'var(--le-red)' : '#0D0D12';
+
+  // Small close delay so quick mouse travel across the panel doesn't dismiss it.
+  const openNow = () => { if (hasChildren) { clearTimeout(closeTimer.current); setOpen(true); } };
+  const closeSoon = () => { if (hasChildren) { clearTimeout(closeTimer.current); closeTimer.current = setTimeout(() => setOpen(false), 120); } };
+
+  return (
+    <div
+      style={{ position: 'relative' }}
+      onMouseEnter={openNow}
+      onMouseLeave={closeSoon}
+    >
+      <a
+        href={item.href}
+        target={item.ext ? '_blank' : undefined}
+        rel={item.ext ? 'noopener noreferrer' : undefined}
+        aria-haspopup={hasChildren ? 'true' : undefined}
+        aria-expanded={hasChildren ? open : undefined}
+        style={{
+          display: 'inline-flex', alignItems: 'center', gap: 6,
+          padding: '10px 16px', borderRadius: 6,
+          fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 15,
+          color: accent,
+          background: isActive ? '#FEEFF2' : open ? '#F6F8FA' : 'transparent',
+          textDecoration: 'none', transition: 'all 200ms var(--ease-out)'
+        }}
+        onMouseEnter={e => { if (!isActive && !hasChildren) e.currentTarget.style.background = '#F6F8FA'; }}
+        onMouseLeave={e => { if (!isActive && !hasChildren) e.currentTarget.style.background = 'transparent'; }}
+      >
+        {item.label}
+        {hasChildren && (
+          <Icon name="chevD" size={12} color={isActive ? 'var(--le-red)' : '#666D80'} stroke={2}
+            style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 200ms var(--ease-out)' }} />
+        )}
+      </a>
+
+      {hasChildren && open && (
+        // Outer wrapper touches the trigger (top:100%) and carries an 8px transparent
+        // top padding as a hover "bridge" — so moving the cursor onto the panel never
+        // crosses a dead zone that would dismiss it.
+        <div style={{ position: 'absolute', top: '100%', left: 0, paddingTop: 8, zIndex: 60 }}>
+          <div style={{
+            minWidth: 268,
+            background: '#fff', border: '1px solid #ECEFF3', borderRadius: 12,
+            boxShadow: '0 12px 32px rgba(13,13,18,0.12)', padding: 8,
+            animation: 'fadeUp 160ms var(--ease-out)'
+          }}>
+          {item.children.map(c => (
+            <a key={c.href} href={c.href} style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
+              padding: '11px 12px', borderRadius: 8,
+              fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 14.5,
+              color: '#0D0D12', textDecoration: 'none',
+              transition: 'background 160ms var(--ease-out), color 160ms var(--ease-out)'
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#F6F8FA'; e.currentTarget.style.color = 'var(--le-red)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0D0D12'; }}
+            >
+              {c.label}
+              <Icon name="chevR" size={13} color="#C6CBD4" stroke={2} />
+            </a>
+          ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Mobile nav item — plain link, or an accordion when it owns sub-pages.
+function MobileNavItem({ item, active, onNavigate }) {
+  const [open, setOpen] = useState(false);
+  const isActive = active === item.id;
+  const hasChildren = item.children && item.children.length > 0;
+  const accent = isActive ? 'var(--le-red)' : '#0D0D12';
+
+  const rowStyle = {
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    padding: '16px 14px', borderRadius: 8,
+    fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 18,
+    color: accent, background: isActive ? '#FEEFF2' : 'transparent',
+    textDecoration: 'none', borderBottom: '1px solid #F2F2F2',
+    width: '100%', border: 0, cursor: 'pointer', textAlign: 'left'
+  };
+
+  if (!hasChildren) {
+    return (
+      <a href={item.href} target={item.ext ? '_blank' : undefined} rel={item.ext ? 'noopener noreferrer' : undefined}
+        onClick={onNavigate} style={rowStyle}>
+        {item.label}
+        <Icon name="chevR" size={14} color={isActive ? 'var(--le-red)' : '#666D80'} stroke={2} />
+      </a>
+    );
+  }
+
+  return (
+    <div>
+      <button onClick={() => setOpen(o => !o)} aria-expanded={open} style={{ ...rowStyle, background: open ? '#F6F8FA' : rowStyle.background }}>
+        {item.label}
+        <Icon name="chevD" size={14} color={isActive ? 'var(--le-red)' : '#666D80'} stroke={2}
+          style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 200ms var(--ease-out)' }} />
+      </button>
+      {open && (
+        <div style={{ display: 'flex', flexDirection: 'column', padding: '4px 0 8px' }}>
+          {item.children.map(c => (
+            <a key={c.href} href={c.href} onClick={onNavigate} style={{
+              padding: '12px 14px 12px 26px', fontFamily: 'var(--font-display)', fontWeight: 500,
+              fontSize: 15.5, color: '#36394A', textDecoration: 'none'
+            }}>
+              {c.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Header({ active = 'home' }) {
   const { lang } = useLanguage();
   const [open, setOpen] = useState(false);
   const nl = NAV_LABELS[lang];
   const isEn = lang === 'en';
   const homeHref = isEn ? '/en' : '/';
+  const sm = SUBMENUS[lang];
+
   const nav = [
-    { id: 'soluzioni',  label: nl.soluzioni },
-    // { id: 'sysint',  label: nl.sysint },   // no dedicated page yet
-    // { id: 'servizi', label: nl.servizi },   // no dedicated page yet
-    { id: 'ecommerce',  label: nl.ecommerce },
-    { id: 'azienda',    label: nl.azienda },
-    { id: 'contatti',   label: nl.contatti },
+    { id: 'soluzioni', label: nl.soluzioni, href: isEn ? '/en/solutions' : '/soluzioni', children: sm.soluzioni },
+    { id: 'ecommerce', label: nl.ecommerce, href: SHOP_URL, ext: true },
+    { id: 'azienda',   label: nl.azienda,   href: isEn ? '/en/about' : '/azienda', children: sm.azienda },
+    { id: 'contatti',  label: nl.contatti,  href: isEn ? '/en/contact' : '/contatti' },
   ];
+
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 50, background: '#fff', boxShadow: '0 1px 0 #ECEFF3' }}>
       <UtilityBar />
@@ -105,31 +266,9 @@ function Header({ active = 'home' }) {
         </a>
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-          {nav.map(n => {
-            const href =
-              n.id === 'soluzioni'  ? (isEn ? '/en/solutions'  : '/soluzioni')
-              : n.id === 'contatti' ? (isEn ? '/en/contact'    : '/contatti')
-              : n.id === 'azienda'  ? (isEn ? '/en/about'      : '/azienda')
-              : n.id === 'ecommerce' ? SHOP_URL
-              : homeHref;
-            const ext = href.startsWith('http');
-
-            return (
-            <a key={n.id} href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener noreferrer' : undefined} style={{
-              display: 'inline-flex', alignItems: 'center', gap: 6,
-              padding: '10px 16px', borderRadius: 6,
-              fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 15,
-              color: active === n.id ? 'var(--le-red)' : '#0D0D12',
-              background: active === n.id ? '#FEEFF2' : 'transparent',
-              textDecoration: 'none', transition: 'all 200ms var(--ease-out)'
-            }}
-            onMouseEnter={e => { if (active !== n.id) e.currentTarget.style.background = '#F6F8FA'; }}
-            onMouseLeave={e => { if (active !== n.id) e.currentTarget.style.background = 'transparent'; }}
-            >
-              {n.label}
-              <Icon name="chevD" size={12} color={active === n.id ? 'var(--le-red)' : '#666D80'} stroke={2} />
-            </a>
-          )})}
+          {nav.map(n => (
+            <DesktopNavItem key={n.id} item={n} active={active} />
+          ))}
         </nav>
 
         {/* Mobile hamburger — hidden on desktop via CSS */}
@@ -154,7 +293,7 @@ function Header({ active = 'home' }) {
           <div onClick={e => e.stopPropagation()} style={{
             position: 'absolute', top: 0, right: 0, bottom: 0, width: '88%', maxWidth: 360,
             background: '#fff', padding: '24px 22px',
-            display: 'flex', flexDirection: 'column', gap: 8
+            display: 'flex', flexDirection: 'column', gap: 8, overflowY: 'auto'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
               <img src="/assets/logo-logiexpert.png" style={{ height: 40 }} alt="LogiExpert" />
@@ -169,28 +308,9 @@ function Header({ active = 'home' }) {
                 </svg>
               </button>
             </div>
-            {nav.map(n => {
-              const href =
-                n.id === 'soluzioni'  ? (isEn ? '/en/solutions'  : '/soluzioni')
-                : n.id === 'contatti' ? (isEn ? '/en/contact'    : '/contatti')
-                : n.id === 'azienda'  ? (isEn ? '/en/about'      : '/azienda')
-                : n.id === 'ecommerce' ? SHOP_URL
-                : homeHref;
-              const ext = href.startsWith('http');
-
-              return (
-              <a key={n.id} href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener noreferrer' : undefined} onClick={() => setOpen(false)} style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                padding: '16px 14px', borderRadius: 8,
-                fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 18,
-                color: active === n.id ? 'var(--le-red)' : '#0D0D12',
-                background: active === n.id ? '#FEEFF2' : 'transparent',
-                textDecoration: 'none', borderBottom: '1px solid #F2F2F2'
-              }}>
-                {n.label}
-                <Icon name="chevR" size={14} color={active === n.id ? 'var(--le-red)' : '#666D80'} stroke={2} />
-              </a>
-            )})}
+            {nav.map(n => (
+              <MobileNavItem key={n.id} item={n} active={active} onNavigate={() => setOpen(false)} />
+            ))}
           </div>
         </div>
       )}

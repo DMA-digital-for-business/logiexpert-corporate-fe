@@ -102,18 +102,6 @@ function Footer() {
               <a href="mailto:info@logiexpert.com" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>info@logiexpert.com</a><br/>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12 }}>P.IVA/VAT IT09900890964</span>
             </div>
-            <div style={{ marginTop: 22, display: 'inline-flex', gap: 8 }}>
-              {['link', 'mail', 'phone'].map(n => (
-                <div key={n} style={{
-                  width: 36, height: 36, borderRadius: 8,
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.14)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center'
-                }}>
-                  <Icon name={n} size={16} color="#fff" />
-                </div>
-              ))}
-            </div>
           </div>
 
           {c.cols.map(col => (

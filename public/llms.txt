@@ -1,0 +1,31 @@
+# LogiExpert
+
+> LogiExpert è un system integrator e software house italiano (Milano, dal 1994) specializzato in soluzioni di logistica digitale integrata: tracciabilità pallet e asset (LogiTrace), proof of delivery digitale (LogiPod), warehouse management (LogiStock) e hardware AIDC & Mobility (Zebra, Honeywell, Datalogic). Progetta software proprietari, integra hardware e processi al sistema informativo esistente ed eroga servizi di assistenza e consulenza per Manufacturing, Logistica & Trasporti e Retail & Distribuzione.
+
+Contatti: +39 02 80898867 · info@logiexpert.com · Viale Sarca 336/F, Edificio 16, 20126 Milano (MI), Italia · P.IVA IT09900890964
+
+## Soluzioni
+
+- [Soluzioni — panoramica](https://www.logiexpert.com/soluzioni): tutte le soluzioni di logistica digitale LogiExpert.
+- [Tracciabilità Pallet & Asset (LogiTrace)](https://www.logiexpert.com/soluzioni/tracciabilita-pallet): tracciabilità end-to-end di pallet, UDC e asset riutilizzabili con visibilità in tempo reale.
+- [Proof of Delivery digitale (LogiPod)](https://www.logiexpert.com/soluzioni/proof-of-delivery): conferma di consegna digitale con firma elettronica, foto, geolocalizzazione e timestamp.
+- [Warehouse Management System (LogiStock)](https://www.logiexpert.com/soluzioni/wms): WMS cloud-native integrato con i principali ERP.
+- [AIDC & Mobility](https://www.logiexpert.com/soluzioni/aidc-mobility): hardware industriale — stampanti, terminali, lettori barcode, POS, RFID.
+
+## Azienda
+
+- [Chi siamo](https://www.logiexpert.com/azienda): identità, competenze e approccio del system integrator.
+- [Lavora con noi](https://www.logiexpert.com/azienda/lavora-con-noi): posizioni aperte e candidature.
+- [Contatti](https://www.logiexpert.com/contatti): parla con un consulente specializzato.
+
+## English
+
+- [Solutions overview](https://www.logiexpert.com/en/solutions)
+- [Company / About us](https://www.logiexpert.com/en/about)
+- [Contact](https://www.logiexpert.com/en/contact)
+
+## Optional
+
+- [eCommerce B2B — LogiShop](https://logishop.logiexpert.com): hardware professionale AIDC (Zebra, Honeywell, Datalogic).
+- [Privacy Policy](https://www.logiexpert.com/privacy-policy)
+- [Sitemap](https://www.logiexpert.com/sitemap.xml)

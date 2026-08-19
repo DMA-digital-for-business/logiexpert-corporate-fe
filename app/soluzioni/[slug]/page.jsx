@@ -42,7 +42,7 @@ export default async function SoluzioneDetailPage({ params }) {
     notFound();
   }
 
-  const { title, pitch, software, faq } = data.it;
+  const { title, pitch, software } = data.it;
   const url = `https://www.logiexpert.com/soluzioni/${slug}`;
 
   const ldBreadcrumb = {
@@ -55,15 +55,8 @@ export default async function SoluzioneDetailPage({ params }) {
     ],
   };
 
-  const ldFaq = faq?.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faq.map(({ q, a }) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
-  } : null;
+  // FAQPage schema is emitted by the <FAQ> component itself (see components/FAQ.jsx),
+  // so it is intentionally not duplicated here.
 
   // SoftwareApplication schema only for proprietary LogiExpert software (not hardware partner)
   const ldSoftware = software?.name && software.name !== 'Hardware partner' ? {
@@ -84,7 +77,6 @@ export default async function SoluzioneDetailPage({ params }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldBreadcrumb) }} />
-      {ldFaq && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldFaq) }} />}
       {ldSoftware && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldSoftware) }} />}
       <SoluzioneDetail slug={slug} />
     </>

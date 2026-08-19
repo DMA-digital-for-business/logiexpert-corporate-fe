@@ -40,8 +40,21 @@ function FAQ({ items = [] }) {
   const sl = SECTION_LABELS[lang];
   const data = items.length ? items : DEFAULT_ITEMS[lang];
 
+  // FAQPage structured data — emitted wherever this component renders so answer
+  // engines (Google AI Overviews, ChatGPT, Perplexity) can quote the Q&A directly.
+  const ldFaq = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: data.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  };
+
   return (
     <section style={{ background: '#fff', padding: '96px 56px' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldFaq) }} />
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
         <div className="overline" style={{ color: 'var(--le-red)' }}>{sl.overline}</div>
         <h2 style={{ marginTop: 16, fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 36, lineHeight: '44px', letterSpacing: '-0.01em', color: '#0D0D12', margin: '16px 0 40px' }}>

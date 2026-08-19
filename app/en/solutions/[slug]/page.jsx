@@ -43,7 +43,7 @@ export default async function EnSoluzioneDetailPage({ params }) {
     notFound();
   }
 
-  const { title, pitch, software, faq } = data.en;
+  const { title, pitch, software } = data.en;
   const url = `https://www.logiexpert.com/en/solutions/${slug}`;
 
   const ldBreadcrumb = {
@@ -56,15 +56,8 @@ export default async function EnSoluzioneDetailPage({ params }) {
     ],
   };
 
-  const ldFaq = faq?.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faq.map(({ q, a }) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
-  } : null;
+  // FAQPage schema is emitted by the <FAQ> component itself (see components/FAQ.jsx),
+  // so it is intentionally not duplicated here.
 
   const ldSoftware = software?.name && software.name !== 'Hardware partner' ? {
     '@context': 'https://schema.org',
@@ -84,7 +77,6 @@ export default async function EnSoluzioneDetailPage({ params }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldBreadcrumb) }} />
-      {ldFaq && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldFaq) }} />}
       {ldSoftware && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldSoftware) }} />}
       <SoluzioneDetail slug={slug} />
     </>
