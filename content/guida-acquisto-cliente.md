@@ -62,6 +62,10 @@ Naviga il catalogo per categoria o usa la ricerca. Nella pagina di ogni prodotto
 
 Puoi mettere prodotti in entrambi: il carrello e il preventivo sono indipendenti.
 
+![Prodotto aggiunto al carrello: puoi continuare a fare acquisti o andare al carrello.](/guida/prodotto_aggiunto_carrello.png)
+
+![Prodotto aggiunto al preventivo: puoi continuare oppure completare il preventivo.](/guida/prodott_aggiunto_preventivo.png)
+
 **Se conosci già i codici prodotto**, usa l'**ordine rapido**: inserisci codice e quantità, oppure carica un file, e componi l'ordine in pochi secondi senza passare dalle schede prodotto.
 
 ==📷 Screenshot dell'ordine rapido — in arrivo==
@@ -94,11 +98,17 @@ Apri il carrello, controlla le quantità e procedi.
 
 Se hai scelto di richiedere un preventivo, apri il riepilogo, controlla prodotti e quantità e aggiungi eventuali note per il nostro team (esigenze particolari, tempistiche, riferimenti di progetto).
 
+![Riepilogo del preventivo in bozza: prodotti, quantità e messaggio per il team.](/guida/gestione_preventivo_non_loggato.png)
+
 **Se sei registrato**, i tuoi dati sono già compilati: invia e il preventivo compare subito nella tua area riservata.
 
 **Se non sei registrato**, ti chiediamo email e dati aziendali per poterti rispondere.
 
+![Dati dell'acquirente e di fatturazione da compilare per la richiesta di preventivo.](/guida/info_preventivo.png)
+
 > 💡 **Registrati con lo stesso indirizzo email della richiesta.** Ritroverai il preventivo nella tua area riservata, dove potrai consultarlo, scriverci e completare l'ordine online. Puoi farlo anche dopo aver inviato la richiesta.
+
+![I tuoi preventivi nell'area riservata, con stato e totale.](/guida/lista_preventivi_cliente.png)
 
 **Cosa succede dopo**
 
