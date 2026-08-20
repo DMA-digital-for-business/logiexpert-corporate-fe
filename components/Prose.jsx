@@ -74,6 +74,29 @@ export default function Prose({ content = '' }) {
       i++; continue;
     }
 
+    // block image — a line that is only ![alt](src); rendered as a captioned figure
+    const img = line.match(/^!\[(.*?)\]\((.*?)\)\s*$/);
+    if (img) {
+      const alt = img[1].trim();
+      const src = img[2].trim();
+      blocks.push(
+        <figure key={k()} style={{ margin: '24px 0' }}>
+          <img src={src} alt={alt} loading="lazy" style={{
+            display: 'block', width: '100%', height: 'auto',
+            border: '1px solid #ECEFF3', borderRadius: 12,
+            boxShadow: '0 8px 24px rgba(13,13,18,0.08)',
+          }} />
+          {alt && (
+            <figcaption style={{
+              marginTop: 10, fontFamily: 'var(--font-ui)', fontSize: 13, lineHeight: '19px',
+              color: '#98A0AE', textAlign: 'center',
+            }}>{alt}</figcaption>
+          )}
+        </figure>
+      );
+      i++; continue;
+    }
+
     // heading
     const h = line.match(/^(#{1,6})\s+(.*)$/);
     if (h) {

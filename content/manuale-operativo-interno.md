@@ -45,6 +45,8 @@ L'utente ha già un account azienda. Il preventivo arriva già collegato alla su
 **C · Preventivo da utente non registrato**
 Il preventivo arriva senza azienda collegata. Va creata l'azienda oppure approvata la registrazione, se nel frattempo l'utente si è registrato per conto suo.
 
+![Vetrina: il cliente sceglie tra «Aggiungi al carrello» (acquisto diretto) e «Aggiungi al preventivo».](/manuale/prodotto_aggiunto_carrello.png)
+
 ---
 
 ## 4. Procedura — Approvazione di una registrazione azienda
@@ -55,6 +57,12 @@ Il preventivo arriva senza azienda collegata. Va creata l'azienda oppure approva
 4. Approvare la registrazione.
 5. Configurare le condizioni commerciali (vedi § 6) **prima** di comunicare l'attivazione al cliente.
 6. Verificare che l'email di attivazione sia partita.
+
+![Accesso al pannello B2B dal menu laterale di BigCommerce.](/manuale/selezionare_sezione_B2B.png)
+
+![Elenco aziende con stato PENDING / APPROVED: individuare la registrazione da approvare.](/manuale/verificare_company_da_approvare.png)
+
+![Scheda azienda: verifica dei dati e pulsanti Approve / Reject.](/manuale/approvare_company.png)
 
 ---
 
@@ -67,6 +75,8 @@ La richiesta arriva in elenco con stato **New** e, se l'utente non è registrato
 > ⚠️ **L'utente non riceve alcuna email automatica dopo l'invio della richiesta.** Fino alla nostra risposta non ha alcun riscontro: il rispetto dello SLA è l'unica cosa che gli dice che la richiesta è arrivata.
 
 Aprire il preventivo dall'elenco (clic sul numero identificativo o *Edit* dal menu azioni).
+
+![Elenco preventivi con stato NEW / IN PROCESS.](/manuale/verificare_richieste_preventivo.png)
 
 ### 5.2 Controllo anti-duplicati — sempre, prima di tutto
 
@@ -82,6 +92,8 @@ Saltare questo controllo genera due aziende per lo stesso cliente, con storico o
 ### 5.3 Creazione dell'azienda dal preventivo
 
 Nella sezione **Buyer Info** del preventivo, aprire il campo **Company account** e scegliere **Create new company**. Compilati i dati, referente e indirizzi vengono riportati automaticamente sul preventivo.
+
+![Dettaglio preventivo: la sezione Buyer info con il campo Company account.](/manuale/dettaglio_richiesta_preventivo.png)
 
 **Regole da rispettare:**
 
@@ -127,6 +139,8 @@ Da eseguire alla creazione di ogni nuova azienda, prima di comunicare l'attivazi
 
 ## 7. Procedura — Gestione degli ordini
 
+![Elenco ordini con i relativi stati (in attesa di pagamento, di evasione, ecc.).](/manuale/gestione_ordini.png)
+
 **7.1 Ordine con carta.** Confermato automaticamente in base all'esito del pagamento. Nessun intervento manuale.
 
 **7.2 Ordine con bonifico anticipato.** Resta in attesa. L'amministrazione verifica l'accredito in banca e, a riscontro avvenuto, completa manualmente l'ordine a sistema. Solo allora l'ordine passa al magazzino.
@@ -137,6 +151,8 @@ Frequenza di controllo: [CONTENUTO MANCANTE]
 **7.4 Ordine caricato manualmente.** Quando l'ordine viene chiuso fuori dal sito (telefono, email, accordo diretto), va inserito manualmente a sistema. Attenzione: gli ordini creati manualmente **non vengono tracciati dagli strumenti di analisi**, quindi i dati di conversione online risulteranno sottostimati.
 
 **7.5 Passaggio al gestionale.** Ogni ordine confermato deve essere riportato su Odoo. [CONTENUTO MANCANTE: modalità — manuale o integrazione — e responsabile]
+
+![Commenti e note interne sull'ordine (es. dettaglio di cosa approvvigionare presso i fornitori).](/manuale/dettaglio_richiesta_cosa_ordinare.png)
 
 ---
 
