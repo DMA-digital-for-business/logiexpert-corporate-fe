@@ -1,47 +1,19 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Paths under /interno are internal-only documents: protected by HTTP Basic Auth and
-// never indexable. Credentials come from INTERNAL_DOCS_USER / INTERNAL_DOCS_PASSWORD.
-// If those env vars are not set, access is denied by default (fail-closed).
-function checkInternalAuth(request: NextRequest): boolean {
-  const user = process.env.INTERNAL_DOCS_USER;
-  const pass = process.env.INTERNAL_DOCS_PASSWORD;
-  if (!user || !pass) return false;
-
-  const header = request.headers.get('authorization');
-  if (!header?.startsWith('Basic ')) return false;
-
-  try {
-    const [u, p] = atob(header.slice(6)).split(':');
-    return u === user && p === pass;
-  } catch {
-    return false;
-  }
-}
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const isEn = pathname.startsWith('/en');
+  const res = NextResponse.next();
+  res.headers.set('x-lang', pathname.startsWith('/en') ? 'en' : 'it');
 
+  // Internal documents (/interno/*): kept out of search engines via noindex.
+  // The page also sets a noindex meta tag; this header is defense-in-depth.
+  // Note: the path is intentionally crawlable (no robots Disallow) so bots can
+  // actually read the noindex directive.
   if (pathname.startsWith('/interno')) {
-    if (!checkInternalAuth(request)) {
-      return new NextResponse('Autenticazione richiesta', {
-        status: 401,
-        headers: {
-          'WWW-Authenticate': 'Basic realm="LogiExpert Area Interna", charset="UTF-8"',
-          'X-Robots-Tag': 'noindex, nofollow, noarchive',
-        },
-      });
-    }
-    const res = NextResponse.next();
-    res.headers.set('x-lang', isEn ? 'en' : 'it');
     res.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
-    return res;
   }
 
-  const res = NextResponse.next();
-  res.headers.set('x-lang', isEn ? 'en' : 'it');
   return res;
 }
 
