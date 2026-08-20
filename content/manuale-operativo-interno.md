@@ -50,13 +50,11 @@ Il preventivo arriva senza azienda collegata. Va creata l'azienda oppure approva
 ## 4. Procedura — Approvazione di una registrazione azienda
 
 1. Aprire la richiesta dalla sezione aziende del pannello B2B.
-2. **Verificare i dati fiscali**: Partita IVA attiva, ragione sociale coerente, Codice SDI o PEC presenti. [CONTENUTO MANCANTE: definire i criteri di rifiuto]
+2. **Verificare i dati fiscali**: Partita IVA attiva, ragione sociale coerente, Codice SDI o PEC presenti.
 3. **Verificare che non esista già un'azienda con la stessa email o Partita IVA.** Se esiste, non creare un secondo account: unificare sull'esistente.
 4. Approvare la registrazione.
 5. Configurare le condizioni commerciali (vedi § 6) **prima** di comunicare l'attivazione al cliente.
 6. Verificare che l'email di attivazione sia partita.
-
-**Se la registrazione va rifiutata:** [CONTENUTO MANCANTE: procedura e testo di comunicazione al cliente]
 
 ---
 
@@ -100,8 +98,6 @@ Nella sezione **Buyer Info** del preventivo, aprire il campo **Company account**
 - Selezionare la modalità di spedizione. Senza una modalità selezionata, le imposte non vengono calcolate e restano da definire fino al checkout.
 - Se il catalogo è cambiato dopo la richiesta, aggiornare le righe prodotto prima di inviare.
 
-> **Verifica del margine.** Il costo d'acquisto dei prodotti non è visibile sul preventivo. Per controllarlo occorre aprire la scheda prodotto a catalogo. In alternativa, rispettare le soglie di sconto massimo per categoria. [CONTENUTO MANCANTE: definire le soglie]
-
 ### 5.5 Invio al cliente
 
 1. Configurare i metodi di pagamento dell'azienda (§ 6) **prima dell'invio**, così al checkout il cliente trova le condizioni corrette.
@@ -125,19 +121,7 @@ Da eseguire alla creazione di ogni nuova azienda, prima di comunicare l'attivazi
 
 **6.1 Metodi di pagamento.** Nella scheda dell'azienda, sezione metodi di pagamento, attivare solo quelli previsti dall'accordo. I metodi disponibili sono quelli già attivi a livello di negozio; qui si sceglie quali rendere visibili a quella specifica azienda.
 
-Impostazione consigliata: [CONTENUTO MANCANTE: policy del cliente, es. "nuovi clienti solo carta e bonifico anticipato; pagamento differito dopo N ordini o su approvazione amministrazione"]
-
 **6.2 Termini di pagamento.** Impostare il termine concordato (da pagamento alla ricezione fino a 60 giorni). In assenza di impostazione, vale il termine predefinito del negozio.
-
-**6.3 Credito e tutele.** Se è attivo il pagamento con ordine d'acquisto:
-
-- impostare il **massimale di credito**, che limita il valore del **singolo ordine** pagabile con ordine d'acquisto;
-- attivare il blocco automatico dell'ordine d'acquisto oltre soglia (gli altri metodi restano disponibili);
-- il **blocco per insoluto** sospende tutte le transazioni tranne il pagamento delle fatture, e mostra al cliente un avviso nella sua area riservata.
-
-> ⚠️ **Il massimale non è un fido.** Non si riduce con gli ordini effettuati né si ripristina con i pagamenti ricevuti: va aggiornato manualmente. Se serve un controllo reale dell'esposizione, va sincronizzato con il gestionale. [CONTENUTO MANCANTE: decidere se integrare con Odoo]
-
-**6.4 Listino.** Assegnare l'azienda al listino corretto, così i prezzi a catalogo risultano già scontati. [CONTENUTO MANCANTE: mappa listini/categorie cliente]
 
 ---
 
@@ -153,58 +137,6 @@ Frequenza di controllo: [CONTENUTO MANCANTE]
 **7.4 Ordine caricato manualmente.** Quando l'ordine viene chiuso fuori dal sito (telefono, email, accordo diretto), va inserito manualmente a sistema. Attenzione: gli ordini creati manualmente **non vengono tracciati dagli strumenti di analisi**, quindi i dati di conversione online risulteranno sottostimati.
 
 **7.5 Passaggio al gestionale.** Ogni ordine confermato deve essere riportato su Odoo. [CONTENUTO MANCANTE: modalità — manuale o integrazione — e responsabile]
-
----
-
-## 8. Controlli periodici
-
-**Ogni giorno**
-
-- [ ] Preventivi in stato *New* non ancora presi in carico
-- [ ] Richieste di registrazione in attesa di approvazione
-- [ ] Ordini in attesa di verifica bonifico
-- [ ] Ordini confermati non ancora riportati sul gestionale
-
-**Ogni settimana**
-
-- [ ] Preventivi inviati e senza risposta: sollecito o chiusura
-- [ ] Preventivi in scadenza nei prossimi 7 giorni
-- [ ] Aziende duplicate da unificare
-- [ ] Fatture scadute e posizioni da bloccare
-
-**Ogni mese**
-
-- [ ] Revisione dei massimali di credito rispetto all'esposizione reale
-- [ ] Verifica dei metodi di pagamento attivi per azienda
-- [ ] Tasso di conversione dei preventivi e tempi medi di risposta
-
----
-
-## 9. Errori da evitare
-
-| Errore | Conseguenza | Come evitarlo |
-|---|---|---|
-| Creare l'azienda senza cercare l'email | Due account per lo stesso cliente | Controllo anti-duplicati sempre, § 5.2 |
-| Email del referente diversa da quella della richiesta | Il cliente non ritrova il preventivo e non riceve le comunicazioni | Copiare e incollare, mai riscrivere |
-| Inviare il preventivo senza configurare i pagamenti | Al checkout il cliente non trova le condizioni pattuite | Configurare le condizioni prima dell'invio, § 6 |
-| Salvare il preventivo senza eseguire l'invio email | Il cliente non riceve nulla e resta in attesa | Invio email come passaggio finale obbligatorio, § 5.5 |
-| Convertire un preventivo in ordine senza averlo inviato | L'offerta non resta tracciata da nessuna parte | Inviare sempre prima di convertire |
-| Trattare il massimale di credito come un fido | Esposizione superiore al previsto | Aggiornamento manuale o integrazione gestionale |
-
----
-
-## 10. Verifica prima dell'avvio
-
-- [ ] Richieste di preventivo abilitate per utenti non registrati
-- [ ] Workflow CPQ attivo sul pannello preventivi
-- [ ] Metodi di pagamento configurati a livello di negozio
-- [ ] Funzionalità di credito azienda attivate
-- [ ] Termine di pagamento predefinito impostato
-- [ ] Email di attivazione account e di invio preventivo verificate: contenuto, mittente, recapito
-- [ ] Test completo: richiesta da utente non registrato → presa in carico → creazione azienda → configurazione pagamenti → invio → accesso del cliente → accettazione → ordine → fattura
-- [ ] Test del percorso alternativo: registrazione con la stessa email della richiesta → approvazione → il preventivo risulta collegato all'account
-- [ ] Visibilità dei preventivi senza azienda collegata verificata per tutti gli utenti del team
-- [ ] Ruoli, responsabili e livelli di servizio assegnati e comunicati
 
 ---
 

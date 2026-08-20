@@ -7,7 +7,7 @@ import { makeSlugger } from '../lib/toc';
 // inline marks **bold**, [link](url) and `code`. Styling matches the site tokens.
 
 // ── Inline marks ────────────────────────────────────────────────────────────
-const INLINE = /(\*\*(.+?)\*\*)|(\[(.+?)\]\((.+?)\))|(`(.+?)`)/g;
+const INLINE = /(\*\*(.+?)\*\*)|(\[(.+?)\]\((.+?)\))|(`(.+?)`)|(==(.+?)==)/g;
 
 function renderInline(text, keyPrefix = 'i') {
   const nodes = [];
@@ -34,6 +34,13 @@ function renderInline(text, keyPrefix = 'i') {
           fontFamily: 'var(--font-mono)', fontSize: '0.88em',
           background: '#F2F2F2', border: '1px solid #ECEFF3', borderRadius: 5, padding: '1px 6px', color: '#0D0D12',
         }}>{m[7]}</code>
+      );
+    } else if (m[8]) {
+      nodes.push(
+        <mark key={key} style={{
+          background: '#FFF3C4', color: '#5A4A00', fontStyle: 'normal',
+          padding: '1px 6px', borderRadius: 5, WebkitBoxDecorationBreak: 'clone', boxDecorationBreak: 'clone',
+        }}>{m[9]}</mark>
       );
     }
     last = m.index + m[0].length;

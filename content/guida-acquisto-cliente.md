@@ -1,7 +1,6 @@
 # Come acquistare su LogiExpert
 
 **Guida all'acquisto online per aziende**
-Versione bozza 1.0 — da validare con il cliente
 
 > Registrati, aggiungi i prodotti al carrello e completa l'acquisto direttamente sul sito.
 > Se hai bisogno di condizioni dedicate, puoi richiedere un preventivo in qualsiasi momento: il nostro team ti risponde con un'offerta personalizzata che puoi ordinare online.
@@ -20,7 +19,7 @@ Versione bozza 1.0 — da validare con il cliente
 
 ## 1 · Accedi al sito
 
-Vai su [CONTENUTO MANCANTE: URL del sito] e clicca su **Accedi / Registrati** in alto a destra.
+Vai su [logishop.logiexpert.com](https://logishop.logiexpert.com/) e clicca su **Accedi / Registrati** in alto a destra.
 
 Se hai già un account, inserisci email e password: entrerai nella tua **area riservata**, dove trovi ordini, preventivi, fatture e indirizzi salvati.
 
@@ -38,7 +37,7 @@ Se hai già un account, inserisci email e password: entrerai nella tua **area ri
 
 Clicca su **Registrati** e compila i dati richiesti.
 
-**Dati dell'azienda:** ragione sociale, Partita IVA, Codice SDI o PEC, indirizzo della sede, indirizzo di consegna se diverso.
+**Dati dell'azienda:** ragione sociale, Partita IVA, indirizzo della sede, indirizzo di consegna se diverso.
 
 **Dati del referente:** nome, cognome, email aziendale, telefono.
 
@@ -48,7 +47,7 @@ Clicca su **Registrati** e compila i dati richiesti.
 
 La richiesta viene verificata dal nostro team. Al termine della verifica ricevi un'email di conferma con le istruzioni per impostare la password e accedere.
 
-⏱ Tempo di attivazione: [CONTENUTO MANCANTE: SLA di approvazione, es. "entro X ore lavorative"]
+⏱ Tempo di attivazione: ==da confermare con il cliente (es. "entro X ore lavorative")==
 
 Da quel momento entri con la tua email e la password scelta, e vedi il catalogo con le tue condizioni.
 
@@ -63,7 +62,9 @@ Naviga il catalogo per categoria o usa la ricerca. Nella pagina di ogni prodotto
 
 Puoi mettere prodotti in entrambi: il carrello e il preventivo sono indipendenti.
 
-**Se conosci già i codici prodotto**, usa l'**ordine rapido**: inserisci codice e quantità, oppure carica un file, e componi l'ordine in pochi secondi senza passare dalle schede prodotto. [CONTENUTO MANCANTE: confermare disponibilità funzione Quick Order]
+**Se conosci già i codici prodotto**, usa l'**ordine rapido**: inserisci codice e quantità, oppure carica un file, e componi l'ordine in pochi secondi senza passare dalle schede prodotto.
+
+==📷 Screenshot dell'ordine rapido — in arrivo==
 
 ---
 
@@ -71,7 +72,7 @@ Puoi mettere prodotti in entrambi: il carrello e il preventivo sono indipendenti
 
 Apri il carrello, controlla le quantità e procedi.
 
-**Spedizione.** Scegli tra consegna all'indirizzo indicato e [CONTENUTO MANCANTE: eventuale ritiro presso la sede]. I costi di trasporto vengono calcolati in base a peso, volume e destinazione.
+**Spedizione.** La merce viene consegnata all'indirizzo indicato. I costi di trasporto vengono calcolati in base a peso, volume e destinazione.
 
 **Pagamento.** I metodi disponibili dipendono dal tuo account:
 
@@ -107,7 +108,7 @@ Se hai scelto di richiedere un preventivo, apri il riepilogo, controlla prodotti
 4. Puoi rispondere direttamente sul preventivo per chiedere modifiche.
 5. Quando l'offerta ti va bene, la accetti e procedi all'ordine online con i metodi di pagamento attivi sul tuo account.
 
-⏱ Tempo di risposta: [CONTENUTO MANCANTE: SLA risposta preventivi]
+⏱ Tempo di risposta: ==da confermare con il cliente==
 📅 Ogni preventivo ha una data di scadenza indicata sul documento. Dopo tale data i prezzi vanno riconfermati.
 
 ---
@@ -123,10 +124,6 @@ Nella tua area riservata, sezione **Ordini**, trovi lo stato aggiornato di ogni 
 | In lavorazione | Ordine trasmesso al magazzino |
 | Spedito | Merce affidata al corriere |
 
-[CONTENUTO MANCANTE: confermare denominazioni esatte degli stati ordine e tempi medi di evasione/consegna]
-
-**Fatture.** Nella sezione dedicata trovi le fatture emesse, con importi e scadenze. Se hai pagamenti differiti, puoi saldare più fatture in un'unica operazione. [CONTENUTO MANCANTE: confermare attivazione portale fatture]
-
 ---
 
 ## Domande frequenti
@@ -138,13 +135,13 @@ No, puoi completare un acquisto anche senza account. Ma senza registrazione non 
 No. Registrati con lo stesso indirizzo email usato nella richiesta e lo ritroverai nella tua area riservata una volta attivato l'account. In alternativa, ricevi comunque il preventivo via email.
 
 **Perché non vedo il pagamento differito al checkout?**
-I pagamenti differiti sono attivi solo sugli account aziendali con condizioni concordate. Se pensi di averne diritto, scrivici a [CONTENUTO MANCANTE: email commerciale].
+I pagamenti differiti sono attivi solo sugli account aziendali con condizioni concordate. Se pensi di averne diritto, scrivici a [info@logiexpert.com](mailto:info@logiexpert.com).
 
 **Posso aggiungere colleghi al nostro account?**
-Sì. L'amministratore dell'account aziendale può invitare altri utenti e assegnare ruoli diversi, ad esempio chi prepara gli ordini e chi li approva. [CONTENUTO MANCANTE: confermare configurazione ruoli]
+Sì. L'amministratore dell'account aziendale può invitare altri utenti e assegnare ruoli diversi, ad esempio chi prepara gli ordini e chi li approva.
 
 **Posso modificare un ordine già confermato?**
-Contattaci il prima possibile a [CONTENUTO MANCANTE: contatto assistenza]: se l'ordine non è ancora stato preparato possiamo intervenire.
+Contattaci il prima possibile a [info@logiexpert.com](mailto:info@logiexpert.com): se l'ordine non è ancora stato preparato possiamo intervenire.
 
 **Il preventivo è scaduto, posso ordinarlo lo stesso?**
 Scrivici sul preventivo stesso o al tuo referente commerciale: aggiorniamo validità e prezzi e te lo rimandiamo.
@@ -156,8 +153,8 @@ Usa "Password dimenticata" nella pagina di accesso: riceverai un link per reimpo
 
 ## Hai bisogno di aiuto?
 
-📧 [CONTENUTO MANCANTE: email assistenza]
-📞 [CONTENUTO MANCANTE: telefono e orari]
+📧 [info@logiexpert.com](mailto:info@logiexpert.com)
+📞 ==Telefono e orari: da confermare con il cliente==
 
 ---
 
