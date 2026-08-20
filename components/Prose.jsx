@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { makeSlugger } from '../lib/toc';
 
 // Prose — a small, dependency-free Markdown renderer for long-form guide pages.
 // Supports the subset used by the LogiExpert guides: h1–h3, paragraphs, horizontal
@@ -51,6 +52,8 @@ export default function Prose({ content = '' }) {
   let i = 0;
   let key = 0;
   const k = () => `b-${key++}`;
+  const slug = makeSlugger(); // ids must match lib/toc extractToc() order
+  const SCROLL_MARGIN = 132;  // offset for the sticky header when jumping to an anchor
 
   while (i < lines.length) {
     let line = lines[i];
@@ -69,12 +72,13 @@ export default function Prose({ content = '' }) {
     if (h) {
       const level = h[1].length;
       const text = h[2].trim();
+      const id = slug(text);
       if (level === 1) {
-        blocks.push(<h2 key={k()} style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 32, lineHeight: '40px', letterSpacing: '-0.012em', color: '#0D0D12', margin: '8px 0 12px' }}>{renderInline(text, k())}</h2>);
+        blocks.push(<h2 key={k()} id={id} style={{ scrollMarginTop: SCROLL_MARGIN, fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 32, lineHeight: '40px', letterSpacing: '-0.012em', color: '#0D0D12', margin: '8px 0 12px' }}>{renderInline(text, k())}</h2>);
       } else if (level === 2) {
-        blocks.push(<h3 key={k()} style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 24, lineHeight: '32px', letterSpacing: '-0.01em', color: '#0D0D12', margin: '40px 0 12px' }}>{renderInline(text, k())}</h3>);
+        blocks.push(<h3 key={k()} id={id} style={{ scrollMarginTop: SCROLL_MARGIN, fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 24, lineHeight: '32px', letterSpacing: '-0.01em', color: '#0D0D12', margin: '40px 0 12px' }}>{renderInline(text, k())}</h3>);
       } else {
-        blocks.push(<h4 key={k()} style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 17, lineHeight: '26px', color: '#0D0D12', margin: '28px 0 10px' }}>{renderInline(text, k())}</h4>);
+        blocks.push(<h4 key={k()} id={id} style={{ scrollMarginTop: SCROLL_MARGIN, fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 17, lineHeight: '26px', color: '#0D0D12', margin: '28px 0 10px' }}>{renderInline(text, k())}</h4>);
       }
       i++; continue;
     }

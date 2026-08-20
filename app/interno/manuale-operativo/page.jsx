@@ -1,4 +1,5 @@
 import GuideDoc from '../../../screens/GuideDoc';
+import FlussoManuale from '../../../components/FlussoManuale';
 import { loadGuide } from '../../../lib/guideContent';
 
 // Internal operating manual — NOT public. noindex/nofollow, excluded from the sitemap
@@ -25,7 +26,8 @@ export default function ManualeOperativoPage() {
       title={title}
       subtitle={subtitle}
       badge="Documento riservato"
-      notice="Documento a uso interno LogiExpert, non pubblicato e non indicizzato. Non condividere questo link all’esterno. Versione bozza: i segnaposto [CONTENUTO MANCANTE] vanno risolti prima dell’avvio."
+      notice="Documento a uso interno LogiExpert, non pubblicato e non indicizzato. Raggiungibile da chiunque abbia il link. Versione bozza: i segnaposto [CONTENUTO MANCANTE] vanno risolti prima dell’avvio."
+      flow={<FlussoManuale />}
       content={body}
     />
   );

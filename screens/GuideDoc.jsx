@@ -2,6 +2,8 @@
 
 import Icon from '../components/Icon';
 import Prose from '../components/Prose';
+import IndiceContenuti from '../components/IndiceContenuti';
+import { extractToc } from '../lib/toc';
 import { useRoutes } from '../lib/routes';
 import { useLanguage } from '../lib/LanguageContext';
 
@@ -10,10 +12,12 @@ import { useLanguage } from '../lib/LanguageContext';
 // body with the Markdown content. Used by both the public customer guide and the
 // internal operating manual.
 
-export default function GuideDoc({ overline, title, subtitle, badge, notice, content }) {
+export default function GuideDoc({ overline, title, subtitle, badge, notice, content, flow }) {
   const routes = useRoutes();
   const { lang } = useLanguage();
   const back = lang === 'en' ? 'Back to home' : 'Torna alla home';
+  const tocTitle = lang === 'en' ? 'Table of contents' : 'Indice dei contenuti';
+  const toc = extractToc(content, { maxLevel: 3 });
 
   return (
     <main data-screen-label="GuideDoc" style={{ background: '#fff' }}>
@@ -70,6 +74,10 @@ export default function GuideDoc({ overline, title, subtitle, badge, notice, con
               <span>{notice}</span>
             </div>
           )}
+
+          {flow}
+
+          <IndiceContenuti items={toc} title={tocTitle} />
 
           <Prose content={content} />
 

@@ -78,6 +78,9 @@ textarea:focus {
   transform: none;
 }
 
+/* Smooth in-page anchor jumps (index / flow → sections) */
+html { scroll-behavior: smooth; }
+
 /* Fade + rise — nav dropdowns and the mobile drawer entrance */
 @keyframes fadeUp {
   0%   { opacity: 0; transform: translateY(-6px); }
