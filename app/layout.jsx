@@ -12,6 +12,9 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL('https://www.logiexpert.com'),
+  verification: {
+    google: 'wPo84C7LvSRCKOKUKtK4guTKaYv4FS_Iv80PTBKOafc',
+  },
   title: {
     default: 'LogiExpert — System integrator e software house per la logistica digitale',
     template: '%s — LogiExpert',
