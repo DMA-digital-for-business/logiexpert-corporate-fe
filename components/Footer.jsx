@@ -1,7 +1,7 @@
 'use client';
 
 import Icon from './Icon';
-import { SHOP_URL } from './links';
+import { SHOP_URL, PRIVACY_POLICY_URL, COOKIE_POLICY_URL } from './links';
 import { useLanguage } from '../lib/LanguageContext';
 
 // Footer — dark outer + dark-deep inner, category pills + columns
@@ -28,7 +28,7 @@ const CONTENT = {
       ]},
       // Legal column removed — pagine legali non ancora disponibili
     ],
-    privacy: { l: 'Privacy Policy', h: '/privacy-policy' },
+    privacy: { l: 'Privacy Policy', h: PRIVACY_POLICY_URL },
     copyright: '© LogiExpert 2026 — Tutti i diritti riservati',
     tagline: 'System integrator · Software house per la logistica digitale',
   },
@@ -53,7 +53,7 @@ const CONTENT = {
       ]},
       // Legal column removed — legal pages not yet available
     ],
-    privacy: { l: 'Privacy Policy', h: '/en/privacy-policy' },
+    privacy: { l: 'Privacy Policy', h: PRIVACY_POLICY_URL },
     copyright: '© LogiExpert 2026 — All rights reserved',
     tagline: 'System integrator · Software house for digital logistics',
   },
@@ -128,6 +128,7 @@ function Footer() {
           <span>{c.copyright}</span>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 16 }}>
             <a href={c.privacy.h} style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>{c.privacy.l}</a>
+            <a href={COOKIE_POLICY_URL} style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>Cookie Policy</a>
             <span>{c.tagline}</span>
           </span>
         </div>

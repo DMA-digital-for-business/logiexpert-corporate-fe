@@ -27,5 +27,6 @@ Contatti: +39 02 80898867 · info@logiexpert.com · Viale Sarca 336/F, Edificio 
 ## Optional
 
 - [eCommerce B2B — LogiShop](https://logishop.logiexpert.com): hardware professionale AIDC (Zebra, Honeywell, Datalogic).
-- [Privacy Policy](https://www.logiexpert.com/privacy-policy)
+- [Privacy Policy](https://logishop.logiexpert.com/privacy-policy)
+- [Cookie Policy](https://logishop.logiexpert.com/cookie-policy)
 - [Sitemap](https://www.logiexpert.com/sitemap.xml)
